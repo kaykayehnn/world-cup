@@ -1,0 +1,14 @@
+{
+  "name": "world-cup",
+  "version": "0.0.1",
+  "description": "React app showcasing Football World Cup 2018",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd server && npm install && cd ../client && npm install",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start"
+  },
+  "keywords": [],
+  "author": "KN",
+  "license": "MIT"
+}
