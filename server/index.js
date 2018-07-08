@@ -8,7 +8,7 @@ const app = require('express')()
 
 const cache = require('./config/cache')()
 require('./config/database')()
-require('./config/express')(app)
+require('./config/express')(app, cache)
 require('./config/routes')(app)
 require('./config/jwtPassport')(cache)
 

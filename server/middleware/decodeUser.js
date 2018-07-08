@@ -1,14 +1,17 @@
-const jwt = require('jsonwebtoken')
+const jwtVerifierFactory = require('../utilities/jwtVerifier')
 
-const JWT_SECRET = process.env.JWT_SECRET
+module.exports = cache => {
+  const verifier = jwtVerifierFactory(cache)
 
-module.exports = (req, res, next) => {
-  try {
-    let token = req.get('Authorization').split(' ')[1]
-    req.token = token
+  return async (req, res, next) => {
+    try {
+      let { token, payload } = await verifier.exists(req)
 
-    req.user = jwt.verify(token, JWT_SECRET)
-  } catch (e) { } finally {
-    next()
+      req.token = token
+      req.user = payload
+    } catch (e) {
+    } finally {
+      next()
+    }
   }
 }
