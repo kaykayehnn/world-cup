@@ -1,11 +1,11 @@
-const UNAUTHORIZED = 403
+const FORBIDDEN = 403
 
 exports.enforceAuthStatus = (shouldBeLoggedIn) => (req, res, next) => {
   let isLoggedIn = req.isAuthenticated()
   if (isLoggedIn === shouldBeLoggedIn) {
     next()
   } else {
-    res.sendStatus(UNAUTHORIZED)
+    res.sendStatus(FORBIDDEN)
   }
 }
 
@@ -14,7 +14,7 @@ exports.isInRole = (role) => {
     if (req.isAuthenticated() && req.user.roles.indexOf(role) > -1) {
       next()
     } else {
-      res.sendStatus(UNAUTHORIZED)
+      res.sendStatus(FORBIDDEN)
     }
   }
 }
