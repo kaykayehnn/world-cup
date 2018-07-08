@@ -62,3 +62,6 @@ typings/
 
 # client build file
 client/dist
+
+# build folder copy for server
+/public/
