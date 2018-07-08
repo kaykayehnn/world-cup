@@ -54,8 +54,9 @@ module.exports = {
       .then(data => res.json(data))
       .catch(next)
   },
-  logout: (req, res) => {
+  logout: (req, res, next) => {
     req.logOut()
       .then(data => res.json(data))
+      .catch(next)
   }
 }
