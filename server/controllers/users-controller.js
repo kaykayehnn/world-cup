@@ -1,53 +1,43 @@
 const encryption = require('../utilities/encryption')
-const handleError = require('../utilities/handleError')
 const User = require('../models/User')
 
-const REGISTER_VIEW = 'users/register'
-const LOGIN_VIEW = 'users/login'
+const emailRgx = /^[^@]{2,}@(?:\w{2,}\.)+\w{2,}$/
 
 module.exports = {
-  registerGet: (req, res) => {
-    res.render(REGISTER_VIEW)
-  },
-  registerPost: (req, res) => {
+  registerPost: (req, res, next) => {
     let {
-      name,
       email,
       password,
       repeat
     } = req.body
-    if (password !== repeat) {
-      handleError(req, res, REGISTER_VIEW, 'Passwords must match')
-      return
+
+    if (!emailRgx.test(email)) {
+      return void next(new Error('Invalid email'))
     }
-    // Add validations
+    if (password !== repeat) {
+      return void next(new Error('Passwords don\'t match'))
+    }
+    if (password.length < 3) {
+      return void next(new Error('Password must be at least 3 characters long'))
+    }
 
     let salt = encryption.generateSalt()
     let newUser = {
-      name,
       email,
       salt: salt,
       hashedPass: encryption.generateHashedPassword(salt, password),
       roles: ['user']
     }
 
-    User.create(newUser).then(user => {
-      req.logIn(user, (err, user) => {
-        if (err) {
-          handleError(req, res, REGISTER_VIEW, err)
-          return
-        }
-
-        res.redirect('/')
+    User.create(newUser)
+      .then(newUser => {
+        req.user = newUser.toPayload()
+        return req.logIn()
       })
-    }).catch(err => {
-      handleError(req, res, REGISTER_VIEW, err.message)
-    })
+      .then(data => res.json(data))
+      .catch(next)
   },
-  loginGet: (req, res) => {
-    res.render(LOGIN_VIEW)
-  },
-  loginPost: (req, res) => {
+  loginPost: (req, res, next) => {
     let reqUser = req.body
     User
       .findOne({
@@ -55,25 +45,17 @@ module.exports = {
       })
       .then(user => {
         if (user == null || !user.authenticate(reqUser.password)) {
-          handleError(req, res, LOGIN_VIEW, 'Invalid user data')
-          return
+          return void next(new Error('Invalid credentials'))
         }
 
-        req.logIn(user, (err, user) => {
-          if (err) {
-            handleError(req, res, LOGIN_VIEW, err)
-            return
-          }
-
-          res.redirect('/')
-        })
+        req.user = user.toPayload()
+        return req.logIn()
       })
-      .catch(err => {
-        handleError(req, res, LOGIN_VIEW, err)
-      })
+      .then(data => res.json(data))
+      .catch(next)
   },
   logout: (req, res) => {
-    req.logout()
-    res.redirect('/')
+    req.logOut()
+      .then(data => res.json(data))
   }
 }

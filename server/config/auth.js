@@ -1,13 +1,11 @@
-const LOGIN_URL = '/users/login'
-const HOME_URL = '/'
+const UNAUTHORIZED = 403
 
 exports.enforceAuthStatus = (shouldBeLoggedIn) => (req, res, next) => {
   let isLoggedIn = req.isAuthenticated()
   if (isLoggedIn === shouldBeLoggedIn) {
     next()
   } else {
-    if (shouldBeLoggedIn) res.redirect(LOGIN_URL)
-    else res.redirect(HOME_URL)
+    res.sendStatus(UNAUTHORIZED)
   }
 }
 
@@ -16,7 +14,7 @@ exports.isInRole = (role) => {
     if (req.isAuthenticated() && req.user.roles.indexOf(role) > -1) {
       next()
     } else {
-      res.redirect(HOME_URL)
+      res.sendStatus(UNAUTHORIZED)
     }
   }
 }

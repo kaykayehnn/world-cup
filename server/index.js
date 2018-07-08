@@ -1,14 +1,16 @@
 let env = process.env.NODE_ENV || 'development'
 if (env !== 'production') {
-  require('dotenv').config()
+  const envPath = require('path').join(__dirname, '.env')
+  require('dotenv').config({ path: envPath })
 }
 
 const app = require('express')()
 
+const cache = require('./config/cache')()
 require('./config/database')()
 require('./config/express')(app)
 require('./config/routes')(app)
-require('./config/passport')()
+require('./config/jwtPassport')(cache)
 
 let port = process.env.PORT
 

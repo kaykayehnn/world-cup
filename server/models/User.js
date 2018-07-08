@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const encryption = require('../utilities/encryption')
 
 let userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   salt: String,
   hashedPass: String,
@@ -12,6 +11,12 @@ let userSchema = new mongoose.Schema({
 userSchema.method({
   authenticate: function (password) {
     return encryption.generateHashedPassword(this.salt, password) === this.hashedPass
+  },
+  toPayload: function () {
+    return {
+      email: this.email,
+      roles: this.roles
+    }
   }
 })
 
