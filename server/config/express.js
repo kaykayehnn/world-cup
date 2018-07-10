@@ -8,6 +8,7 @@ const errorHandler = require('../middleware/errorHandler')
 
 module.exports = (app, cache) => {
   app.use(cookieParser())
+  app.use(express.json())
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(express.static(path.resolve(__dirname, '../../public')))
 
