@@ -1,5 +1,6 @@
 const controllers = require('../controllers/')
 const auth = require('./auth')
+const errorHandler = require('../middleware/errorHandler')
 
 module.exports = (app) => {
   const onlyAuthenticated = auth.enforceAuthStatus(true)
@@ -11,4 +12,5 @@ module.exports = (app) => {
   app.post('/api/user/_logout', onlyAuthenticated, controllers.users.logout)
 
   app.get('/*', controllers.home.index)
+  app.use(errorHandler)
 }
