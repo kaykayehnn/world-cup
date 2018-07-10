@@ -52,14 +52,19 @@ exports.loginPost = (req, res, next) => {
       req.user = user.toPayload()
       return req.logIn()
     })
-    .then(data => res.json(data))
+    .then(data => res.end(JSON.stringify(data)))
     .catch(next)
 }
 
 exports.logout = (req, res, next) => {
   req.logOut()
-    .then(data => res.json(data))
-    .catch(next)
+    .then(data => {
+      res.json(data)
+    })
+    .catch((err) => {
+      console.log(err)
+      next(err)
+    })
 }
 
 exports.getByEmail = (req, res) => {
