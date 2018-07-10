@@ -1,19 +1,20 @@
 import React, { Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-const notLoggedInLinks = [
+const publicLinks = [
   { label: 'Home', location: '/' },
   { label: 'Credits', location: '/credits' }
 ]
-const loggedInLinks = [
-  ...notLoggedInLinks,
-  { label: 'Profile', location: '/profile' }
+const privateLinks = [
+  { label: 'Dashboard', location: '/dashboard' },
+  publicLinks[1],
+  { label: 'Log out', location: '/logout', className: 'last' }
 ]
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user, history }) => {
   let isLoggedIn = !!user
-  let links = isLoggedIn ? loggedInLinks : notLoggedInLinks
+  let links = isLoggedIn ? privateLinks : publicLinks
 
   return (
     <Fragment>
@@ -29,21 +30,23 @@ const Navbar = ({ user }) => {
         <div className='menu flex'>
           {links.map(link => (
             <NavLink key={link.label}
-              className='navbar-link'
+              className={`navbar-link ${link.className || ''}`}
               exact
               to={link.location}>{link.label}
             </NavLink>)
           )}
-          {isLoggedIn && <img src={`/public/images/animals/${user.avatarUrl}`} />}
+          {isLoggedIn && <img className='avatar'
+            src={`/public/images/animals/${user.avatarUrl}`}
+            onClick={() => history.push('/profile')} />}
         </div>
-        {/* <div className="center-line"></div> */}
       </div>
     </Fragment>
   )
 }
 
 Navbar.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  history: PropTypes.object.isRequired
 }
 
-export default Navbar
+export default withRouter(Navbar)
