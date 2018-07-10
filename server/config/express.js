@@ -1,23 +1,17 @@
 const express = require('express')
+const path = require('path')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
-const mongoose = require('mongoose')
-const passport = require('passport')
 
-module.exports = (app) => {
+const decodeUser = require('../middleware/decodeUser')
+const errorHandler = require('../middleware/errorHandler')
 
+module.exports = (app, cache) => {
   app.use(cookieParser())
+  app.use(express.json())
   app.use(bodyParser.urlencoded({ extended: true }))
-  app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
-  }))
-  app.use(passport.initialize())
-  app.use(passport.session())
-  
-  app.use(express.static('public'))
+  app.use(express.static(path.resolve(__dirname, '../../public')))
+
+  app.use(decodeUser(cache))
+  app.use(errorHandler)
 }

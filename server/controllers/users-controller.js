@@ -1,79 +1,75 @@
 const encryption = require('../utilities/encryption')
-const handleError = require('../utilities/handleError')
 const User = require('../models/User')
 
-const REGISTER_VIEW = 'users/register'
-const LOGIN_VIEW = 'users/login'
+const emailRgx = /^[^@]{2,}@(?:\w{2,}\.)+\w{2,}$/
+const NOT_FOUND = 404
 
-module.exports = {
-  registerGet: (req, res) => {
-    res.render(REGISTER_VIEW)
-  },
-  registerPost: (req, res) => {
-    let {
-      name,
-      email,
-      password,
-      repeat
-    } = req.body
-    if (password !== repeat) {
-      handleError(req, res, REGISTER_VIEW, 'Passwords must match')
-      return
-    }
-    // Add validations
+exports.registerPost = (req, res, next) => {
+  let {
+    email,
+    password,
+    repeatPassword
+  } = req.body
 
-    let salt = encryption.generateSalt()
-    let newUser = {
-      name,
-      email,
-      salt: salt,
-      hashedPass: encryption.generateHashedPassword(salt, password),
-      roles: ['user']
-    }
-
-    User.create(newUser).then(user => {
-      req.logIn(user, (err, user) => {
-        if (err) {
-          handleError(req, res, REGISTER_VIEW, err)
-          return
-        }
-
-        res.redirect('/')
-      })
-    }).catch(err => {
-      handleError(req, res, REGISTER_VIEW, err.message)
-    })
-  },
-  loginGet: (req, res) => {
-    res.render(LOGIN_VIEW)
-  },
-  loginPost: (req, res) => {
-    let reqUser = req.body
-    User
-      .findOne({
-        email: reqUser.email
-      })
-      .then(user => {
-        if (user == null || !user.authenticate(reqUser.password)) {
-          handleError(req, res, LOGIN_VIEW, 'Invalid user data')
-          return
-        }
-
-        req.logIn(user, (err, user) => {
-          if (err) {
-            handleError(req, res, LOGIN_VIEW, err)
-            return
-          }
-
-          res.redirect('/')
-        })
-      })
-      .catch(err => {
-        handleError(req, res, LOGIN_VIEW, err)
-      })
-  },
-  logout: (req, res) => {
-    req.logout()
-    res.redirect('/')
+  if (!emailRgx.test(email)) {
+    return void next(new Error('Invalid email'))
   }
+  if (password !== repeatPassword) {
+    return void next(new Error('Passwords don\'t match'))
+  }
+  if (password.length < 3) {
+    return void next(new Error('Password must be at least 3 characters long'))
+  }
+
+  let salt = encryption.generateSalt()
+  let newUser = {
+    email,
+    salt: salt,
+    hashedPass: encryption.generateHashedPassword(salt, password),
+    roles: ['user']
+  }
+
+  User.create(newUser)
+    .then(newUser => {
+      req.user = newUser.toPayload()
+      return req.logIn()
+    })
+    .then(data => res.json(data))
+    .catch(next)
+}
+
+exports.loginPost = (req, res, next) => {
+  let reqUser = req.body
+  User
+    .findOne({
+      email: reqUser.email
+    })
+    .then(user => {
+      if (user == null || !user.authenticate(reqUser.password)) {
+        return void next(new Error('Invalid credentials'))
+      }
+
+      req.user = user.toPayload()
+      return req.logIn()
+    })
+    .then(data => res.json(data))
+    .catch(next)
+}
+
+exports.logout = (req, res, next) => {
+  req.logOut()
+    .then(data => res.json(data))
+    .catch(next)
+}
+
+exports.getByEmail = (req, res) => {
+  let { email } = req.query
+  User.findOne({ email })
+    .then(user => {
+      if (!user) {
+        return void res.sendStatus(NOT_FOUND)
+      }
+
+      res.json(user.toPayload())
+    })
 }

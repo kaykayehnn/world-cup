@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 /** @type {webpack.Configuration} */
 const config = {
@@ -36,11 +37,19 @@ const config = {
     open: true,
     port: 3000,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:9000'
+      }
+    }
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([
+      { from: './public/**/*', to: './' }
+    ]),
     new HTMLWebpackPlugin({ template: path.join(__dirname, 'public/index.html') })
   ]
 }
