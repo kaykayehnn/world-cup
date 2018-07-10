@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import LoginForm from '../components/LoginForm'
 import RegisterForm from '../components/RegisterForm'
-import { formChange, authFormStateChange, createAccount, initiateLogin, login } from '../actions/'
+import { formChange, authFormStateChange, createAccount, initiateLogin, login, authErrorClear } from '../actions/'
 
 // Auth form can be in 3 different states:
 // 1. Create account - email, password, repeat
@@ -11,14 +11,20 @@ import { formChange, authFormStateChange, createAccount, initiateLogin, login } 
 // 3. Password only - followed after valid submission in state 2.
 
 const Redirecter = function (props) {
-  if (props.authFormView === 'CREATE') return <RegisterForm {...props} />
-  return <LoginForm {...props} />
+  let form = props.authFormView === 'CREATE' ? <RegisterForm {...props} /> : <LoginForm {...props} />
+
+  return (
+    <div className='main'>
+      {form}
+    </div>
+  )
 }
 
 const mapStateToProps = state => ({
   authFormView: state.authFormView,
   values: state.form,
-  tempUser: state.tempUser
+  tempUser: state.tempUser,
+  error: state.error
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -26,7 +32,8 @@ const mapDispatchToProps = dispatch => ({
   switchState: (to) => dispatch(authFormStateChange(to)),
   createAccount: () => dispatch(createAccount()),
   initiateLogin: () => dispatch(initiateLogin()),
-  login: () => dispatch(login())
+  login: () => dispatch(login()),
+  clearError: () => dispatch(authErrorClear())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Redirecter)

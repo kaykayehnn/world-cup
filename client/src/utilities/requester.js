@@ -6,7 +6,7 @@ const instance = axios.create({
   transformRequest: [function (data, headers) {
     let session = getSession()
     if (session) {
-      headers['Authorization'] = `Bearer ${session}`
+      headers['Authorization'] = `Bearer ${session.token}`
     }
     return JSON.stringify(data)
   }],

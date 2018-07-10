@@ -1,16 +1,12 @@
 import requester from '../utilities/requester'
-import { saveSession } from '../utilities/storage'
+import { saveSession, clearSession } from '../utilities/storage'
 import decodeUser from '../utilities/decodeUser'
-import { authFormStateChange } from './forms'
+import { authFormStateChange, formClear } from './forms'
 
-export const AUTH_STATE_CHANGE = 'CHANGE_AUTH_STATE'
+export const LOGIN = 'LOGIN'
 
 export function loginSuccess (authData) {
-  return { type: AUTH_STATE_CHANGE, auth: authData }
-}
-
-export function logOut () {
-  return { type: AUTH_STATE_CHANGE }
+  return { type: LOGIN, auth: authData }
 }
 
 export const AUTH_ERROR = 'AUTH_ERROR'
@@ -19,10 +15,19 @@ export function authError (error) {
   return { type: AUTH_ERROR, error }
 }
 
-export const SAVE_TEMPORARY_USER = 'SAVE_TEMPORARY_USER'
+export function authErrorClear () {
+  return authError(null)
+}
+
+export const TEMPORARY_USER_SAVE = 'TEMPORARY_USER_SAVE'
+export const TEMPORARY_USER_CLEAR = 'TEMPORARY_USER_CLEAR'
 
 export function saveTemporaryUser (user) {
-  return { type: SAVE_TEMPORARY_USER, user }
+  return { type: TEMPORARY_USER_SAVE, user }
+}
+
+export function temporaryUserClear () {
+  return { type: TEMPORARY_USER_CLEAR }
 }
 
 const handleLogin = dispatch => res => {
@@ -38,10 +43,11 @@ export function createAccount () {
   return (dispatch, getState) => {
     const { email, password, repeatPassword } = getState().form
 
-    requester.post('/user/', { email, password, repeatPassword })
+    dispatch(authErrorClear())
+    requester.post('/users/', { email, password, repeatPassword })
       .then(handleLogin(dispatch))
-      .catch(err => {
-        dispatch(authError(err)) // TODO not handled
+      .catch(er => {
+        dispatch(authError('An account with this email already exists'))
       })
   }
 }
@@ -49,12 +55,14 @@ export function createAccount () {
 export function initiateLogin () {
   return (dispatch, getState) => {
     let { email } = getState().form
-    requester.get(`/user?email=${email}`)
+
+    dispatch(authErrorClear())
+    requester.get(`/users?email=${email}`)
       .then(res => {
         dispatch(saveTemporaryUser(res.data))
         dispatch(authFormStateChange('PASSWORD'))
-      }).catch(err => {
-        console.log(err) // TODO needs to be handled
+      }).catch(er => {
+        dispatch(authError('This account doesn\'t exists'))
       })
   }
 }
@@ -63,10 +71,30 @@ export function login () {
   return (dispatch, getState) => {
     let { email, password } = getState().form
 
-    requester.post('/user/_login', { email, password })
+    dispatch(authErrorClear())
+    requester.post('/users/_login', { email, password })
       .then(handleLogin(dispatch))
-      .catch(err => {
-        console.log(err) // TODO needs to be handled
+      .catch(er => {
+        dispatch(authError('Invalid credentials'))
       })
+  }
+}
+
+export const LOGOUT = 'LOGOUT'
+
+function logoutSuccess () {
+  return { type: LOGOUT }
+}
+
+export function logout () {
+  return dispatch => {
+    requester.post('/users/_logout')
+      .then(res => {
+        clearSession()
+        dispatch(logoutSuccess())
+        dispatch(temporaryUserClear())
+        dispatch(formClear())
+        dispatch(authFormStateChange('EMAIL'))
+      }).catch(console.log)
   }
 }
