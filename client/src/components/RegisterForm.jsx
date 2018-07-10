@@ -20,19 +20,22 @@ const inputFields = [
   }
 ]
 
-const LoginForm = ({ values, inputChange, switchState, createAccount }) => {
+const LoginForm = ({ values, inputChange, switchState, createAccount, error, clearError }) => {
   let inputNodes = inputFields.map(({ key }) => <Input key={key} name={key}
     value={values[key]}
     onChange={inputChange} />)
 
-  let canSubmit = true
+  let canSubmit = values.password === values.repeatPassword
   for (let { key, validator } of inputFields) {
     canSubmit &= validator.test(values[key] || '')
   }
 
   return (
     <div className='welcome-modal'>
-      <h2 className='auth-title'>Sign up</h2>
+      <div className='auth-title'>
+        <h2 className='title'>Sign in</h2>
+      </div>
+      <div className={`auth-error ${error && 'visible'}`} onClick={clearError}>{error || 'Error'}</div>
       <form className='auth-form' onSubmit={preventDefaultAndCall(createAccount)}>
         {inputNodes}
         <div className='wrapper'>
@@ -53,7 +56,9 @@ LoginForm.propTypes = {
   values: PropTypes.objectOf(PropTypes.string).isRequired,
   inputChange: PropTypes.func.isRequired,
   switchState: PropTypes.func.isRequired,
-  createAccount: PropTypes.func.isRequired
+  createAccount: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  clearError: PropTypes.func.isRequired
 }
 
 export default LoginForm

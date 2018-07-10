@@ -20,7 +20,7 @@ const inputFields = {
   ]
 }
 
-const LoginForm = ({ authFormView, values, inputChange, switchState, initiateLogin, tempUser, login }) => {
+const LoginForm = ({ authFormView, values, inputChange, switchState, initiateLogin, tempUser, login, error, clearError }) => {
   let currentInputFields = inputFields[authFormView]
   let inputNodes = currentInputFields.map(({ key }) => <Input key={key} name={key}
     value={values[key]}
@@ -43,8 +43,15 @@ const LoginForm = ({ authFormView, values, inputChange, switchState, initiateLog
 
   return (
     <div className='welcome-modal'>
-      <h2 className='auth-title'>Sign in</h2>
+      <div className='auth-title'>
+        <h2 className='title'>Sign in</h2>
+        {(isPassword || tempUser.email) &&
+          <img className={`icon interactive ${!isPassword ? 'flipped' : ''}`}
+            onClick={() => switchState(isPassword ? 'EMAIL' : 'PASSWORD')}
+            src='/public/images/left-arrow.svg' alt='Left arrow' />}
+      </div>
       {isPassword && passwordOnlyLazy()}
+      <div className={`auth-error ${error && 'visible'}`} onClick={clearError}>{error || 'Error'}</div>
       <form className='auth-form' onSubmit={preventDefaultAndCall(submitCallback)}>
         {inputNodes}
         <div className='wrapper'>
@@ -56,7 +63,7 @@ const LoginForm = ({ authFormView, values, inputChange, switchState, initiateLog
           </div>
         </div>
       </form>
-      <button className='change-state-btn interactive submit' onClick={() => switchState('CREATE')}>Sign up</button>
+      <button className={`change-state-btn interactive ${isPassword && 'hidden'}`} onClick={() => switchState('CREATE')}>Sign up</button>
     </div>
   )
 }
@@ -68,7 +75,9 @@ LoginForm.propTypes = {
   switchState: PropTypes.func.isRequired,
   initiateLogin: PropTypes.func.isRequired,
   tempUser: PropTypes.object,
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  error: PropTypes.string,
+  clearError: PropTypes.func.isRequired
 }
 
 export default LoginForm
