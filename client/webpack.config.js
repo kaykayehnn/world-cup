@@ -34,7 +34,6 @@ const config = {
   },
   devtool: 'eval-source-map',
   devServer: {
-    open: true,
     port: 3000,
     hot: true,
     historyApiFallback: true,
