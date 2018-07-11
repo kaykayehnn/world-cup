@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const publicLinks = [
@@ -35,9 +35,11 @@ const Navbar = ({ user, history }) => {
               to={link.location}>{link.label}
             </NavLink>)
           )}
-          {isLoggedIn && <img className='avatar'
-            src={`/public/images/animals/${user.avatarUrl}`}
-            onClick={() => history.push('/profile')} />}
+          {isLoggedIn &&
+            <NavLink className='avatar' exact to='/profile'>
+              <img
+                src={`/public/images/animals/${user.avatarUrl}`} />
+            </NavLink>}
         </div>
       </div>
     </Fragment>
@@ -45,8 +47,7 @@ const Navbar = ({ user, history }) => {
 }
 
 Navbar.propTypes = {
-  user: PropTypes.object,
-  history: PropTypes.object.isRequired
+  user: PropTypes.object
 }
 
-export default withRouter(Navbar)
+export default Navbar

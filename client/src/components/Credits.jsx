@@ -23,17 +23,11 @@ const credits = [
   }
 ]
 
-const Credits = () => (
-  <Fragment>
-    {
-      credits.map(obj => (
-        <Fragment key={obj.label}>
-          <h2>{obj.label}</h2>
-          <div dangerouslySetInnerHTML={{ __html: obj.link }} />
-        </Fragment>
-      ))
-    }
+const Credits = () => credits.map(obj => (
+  <Fragment key={obj.label}>
+    <h2>{obj.label}</h2>
+    <div dangerouslySetInnerHTML={{ __html: obj.link }} />
   </Fragment>
-)
+))
 
 export default Credits
