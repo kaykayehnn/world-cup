@@ -144,6 +144,9 @@ a {
     background: #F2F2F2;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   }
+  avatar.active {
+    background: #F2F2F2;
+  }
   .last {
     order: 1;
   }
@@ -168,9 +171,12 @@ a {
 }
 
 .navbar-link:hover,
-.navbar-link.active,
-.avatar.active {
+.navbar-link.active {
   background: #F2F2F2;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+avatar.active {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
