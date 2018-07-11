@@ -5,6 +5,7 @@ import Home from './HomeRedirecter'
 import Credits from '../components/Credits'
 import Logout from './Logout'
 import Profile from './Profile'
+import Logout from './Logout'
 
 import PrivateRoute from '../HOC/PrivateRoute'
 
