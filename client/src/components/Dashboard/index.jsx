@@ -10,7 +10,7 @@ class Dashboard extends Component {
   render () {
     return (
       <div className='dashboard'>
-        {this.props.teams.map(t => <Team key={t.name} name={t.name} />)}
+        {this.props.teams.map(t => <Team key={t.name} name={t.name} stats={t.stats} />)}
       </div>
     )
   }

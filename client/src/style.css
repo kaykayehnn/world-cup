@@ -383,10 +383,11 @@ avatar.active {
   color: #807F78;
   border-radius: 10%;
   transition: 0.3s;
+  font-size: 1.20em;
 }
 
 .team .wrapper {
-  margin: 10px;
+  margin: 10px 10px 5px;
   cursor: pointer;
 }
 
@@ -401,12 +402,27 @@ avatar.active {
 }
 
 .team-name {
-  padding-top: 5px;
+  padding: 2px;
   border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
   display: block;
   text-align: center;
-  font-size: 1.20em;
 }
+
+.team-stats {
+  display: flex;
+  margin-top: 5px;
+  justify-content: space-evenly;
+}
+
+.team-stats div div {
+  text-align: center;
+}
+
+/* .team-stats>* {
+  border-left: 1px solid #999999;
+  border-right: 1px solid #999999;
+} */
 
 .hidden {
   display: none;
