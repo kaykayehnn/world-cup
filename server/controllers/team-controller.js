@@ -6,13 +6,10 @@ exports.getTeams = (req, res) => {
   let pr2 = getTeamStatistics(req.cache)
   Promise.all([pr1, pr2])
     .then(([teams, stats]) => {
-      let result = teams.reduce((p, c) => {
-        p[c.toObject().name] = {}
-        return p
-      }, {})
+      let result = teams.map(t => ({ name: t.name }))
 
       for (let key in stats) {
-        result[key] = Object.assign(result[key], stats[key])
+        result.find(o => o.name === key).stats = stats[key]
       }
 
       res.json(result)
