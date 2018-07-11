@@ -397,6 +397,7 @@ avatar.active {
 }
 
 .team-crest {
+  margin: 0 7.5%;
   border: 1px solid rgb(154, 154, 154);
   border-radius: 50%;
 }
