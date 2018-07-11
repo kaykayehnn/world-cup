@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 
 const decodeUser = require('../middleware/decodeUser')
+const attachCache = require('../middleware/attachCache')
 
 module.exports = (app, cache) => {
   app.use(cookieParser())
@@ -12,4 +13,5 @@ module.exports = (app, cache) => {
   app.use(express.static(path.resolve(__dirname, '../../public')))
 
   app.use(decodeUser(cache))
+  app.use(attachCache(cache))
 }
