@@ -14,7 +14,7 @@ const Redirecter = function (props) {
   let form = props.authFormView === 'CREATE' ? <RegisterForm {...props} /> : <LoginForm {...props} />
 
   return (
-    <div className='main'>
+    <div className='grid'>
       {form}
     </div>
   )
