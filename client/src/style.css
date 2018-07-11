@@ -346,6 +346,62 @@ a {
   }
 }
 
+.dashboard {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+@media screen and (min-width: 500px) {
+  .dashboard {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .dashboard {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1150px) {
+  .dashboard {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+.team {
+  border: 1px solid #999999;
+  background: #EAEAEA;
+  color: #807F78;
+  border-radius: 10%;
+  transition: 0.3s;
+}
+
+.team .wrapper {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.team:hover {
+  background: #F2F2F2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.team-crest {
+  border: 1px solid rgb(154, 154, 154);
+  border-radius: 50%;
+}
+
+.team-name {
+  padding-top: 5px;
+  border-top: 1px solid #999999;
+  display: block;
+  text-align: center;
+  font-size: 1.20em;
+}
+
 .hidden {
   display: none;
 }

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
-import { FORM_INPUT_CHANGE, AUTH_FORM_CHANGE, LOGIN, TEMPORARY_USER_SAVE, LOGOUT, TEMPORARY_USER_CLEAR, FORM_CLEAR, AUTH_ERROR } from '../actions/'
+import { FORM_INPUT_CHANGE, AUTH_FORM_CHANGE, LOGIN, TEMPORARY_USER_SAVE, LOGOUT, TEMPORARY_USER_CLEAR, FORM_CLEAR, AUTH_ERROR, AUTH_ERROR_CLEAR } from '../actions/'
+import teams from './teams'
 
 function form (state = {}, action) {
   switch (action.type) {
@@ -47,6 +48,8 @@ function globalError (state = '', action) {
   switch (action.type) {
     case AUTH_ERROR:
       return action.error
+    case AUTH_ERROR_CLEAR:
+      return ''
     default:
       return state
   }
@@ -57,6 +60,7 @@ const rootReducer = combineReducers({
   authFormView: authForm,
   auth,
   tempUser,
+  teams,
   error: globalError
 })
 
