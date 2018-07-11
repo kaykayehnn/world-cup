@@ -13,7 +13,7 @@ This is a coursework project for ReactJS Fundametals June 2018.
 ### Other requirements
 - [x] Apply error handling and data validation to avoid crashes when invalid data is entered
 - [ ] Prevent security exploits (XSS, XSRF, Parameter Tampering, etc.)
-- [ ] Handle correctly special HTML characters and tags like <script>, <br />, etc.
+- [ ] Handle correctly special HTML characters and tags like <script>, line breaks, etc.
 - [x] Use a source control system, like GitHub
 
 ### Optional Requirements
