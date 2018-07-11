@@ -15,8 +15,10 @@ export function authError (error) {
   return { type: AUTH_ERROR, error }
 }
 
+export const AUTH_ERROR_CLEAR = 'AUTH_ERROR_CLEAR'
+
 export function authErrorClear () {
-  return authError(null)
+  return { type: AUTH_ERROR_CLEAR }
 }
 
 export const TEMPORARY_USER_SAVE = 'TEMPORARY_USER_SAVE'
@@ -88,7 +90,7 @@ function logoutSuccess () {
 
 export function logout () {
   return dispatch => {
-    requester.post('/users/_logout')
+    return requester.post('/users/_logout')
       .then(res => {
         clearSession()
         dispatch(logoutSuccess())
