@@ -29,8 +29,11 @@ const cacheChecker = (key, onAvailable, onMissing) => {
 const getMatches = () => axios.get(MATCHES_URL)
   .then(res => res.data)
 
-exports.getTeamStatistics = cacheChecker(COMPETITION_MATCHES,
-  matchesToStats, getMatches)
+exports.getTeamStatistics = cacheChecker(COMPETITION_MATCHES, matchesToStats, getMatches)
 
 exports.getTeamMatches = (teamName) => cacheChecker(COMPETITION_MATCHES,
-  filterMatches(teamName), getMatches)
+  (data) => {
+    let matches = filterMatches(teamName, data)
+    let stats = matchesToStats(data)[teamName]
+    return { matches, stats }
+  }, getMatches)
