@@ -12,7 +12,6 @@ module.exports = (app) => {
   app.post('/api/users/_logout', onlyAuthenticated, controllers.users.logout)
 
   app.get('/api/teams', onlyAuthenticated, controllers.teams.getTeams)
-  app.get('/api/teams/:teamName/matches', onlyAuthenticated, controllers.teams.getTeamMatches)
 
   app.get('/*', controllers.home.index)
 

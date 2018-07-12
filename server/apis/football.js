@@ -1,36 +1,57 @@
 const axios = require('axios').default
-const matchesToStats = require('./matchesToStats')
-const filterMatches = require('./filterMatches')
 
 axios.defaults.headers['X-Auth-Token'] = process.env.FOOTBALL_API_KEY
 
-const MATCHES_URL = 'http://api.football-data.org/v2/competitions/2000/matches'
-const COMPETITION_MATCHES = 'COMPETITION_MATCHES'
-const CACHE_TIME = 30
+const TEAM_STATS_KEY = 'TEAM_STATS_KEY'
+const CACHE_TIME = 60
 
-const cacheChecker = (key, onAvailable, onMissing) => {
-  return function (cache) {
-    return new Promise((resolve, reject) => {
-      cache.get(key, (er, data) => {
-        if (data) {
-          resolve(onAvailable(JSON.parse(data)))
-        } else {
-          onMissing()
-            .then(data => {
-              resolve(onAvailable(data))
-              cache.setex(COMPETITION_MATCHES, CACHE_TIME, JSON.stringify(data))
-            })
-        }
-      })
-    })
+const ensureExists = (map, ...items) => {
+  for (let item of items) {
+    if (!map.hasOwnProperty(item)) {
+      map[item] = { wins: 0, draws: 0, losses: 0 }
+    }
   }
 }
 
-const getMatches = () => axios.get(MATCHES_URL)
-  .then(res => res.data)
+const aggregateData = data => {
+  let map = {}
 
-exports.getTeamStatistics = cacheChecker(COMPETITION_MATCHES,
-  matchesToStats, getMatches)
+  for (let match of data.matches) {
+    let homeName = match.homeTeam.name
+    let awayName = match.awayTeam.name
+    let winner = match.score.winner
 
-exports.getTeamMatches = (teamName) => cacheChecker(COMPETITION_MATCHES,
-  filterMatches(teamName), getMatches)
+    ensureExists(map, homeName, awayName)
+    if (winner === 'HOME_TEAM') {
+      map[homeName].wins++
+      map[awayName].losses++
+    } else if (winner === 'AWAY_TEAM') {
+      map[awayName].wins++
+      map[homeName].losses++
+    } else if (winner === 'DRAW') {
+      map[homeName].draws++
+      map[awayName].draws++
+    }
+  }
+
+  return map
+}
+
+exports.getTeamStatistics = (cache) => {
+  return new Promise((resolve, reject) => {
+    cache.get(TEAM_STATS_KEY, (er, data) => {
+      if (data) {
+        resolve(JSON.parse(data))
+      } else {
+        axios.get('http://api.football-data.org/v2/competitions/2000/matches')
+          .then(res => {
+            let data = res.data
+            let aggregated = aggregateData(data)
+            cache.setex(TEAM_STATS_KEY, CACHE_TIME, JSON.stringify(aggregated), (er, res) => {
+              resolve(aggregated)
+            })
+          })
+      }
+    })
+  })
+}
