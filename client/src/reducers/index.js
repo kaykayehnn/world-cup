@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { FORM_INPUT_CHANGE, AUTH_FORM_CHANGE, LOGIN, TEMPORARY_USER_SAVE, LOGOUT, TEMPORARY_USER_CLEAR, FORM_CLEAR, AUTH_ERROR, AUTH_ERROR_CLEAR } from '../actions/'
-import teams from './teams'
+import { FORM_INPUT_CHANGE, AUTH_FORM_CHANGE, LOGIN, TEMPORARY_USER_SAVE, LOGOUT, TEMPORARY_USER_CLEAR, FORM_CLEAR, AUTH_ERROR, AUTH_ERROR_CLEAR } from '../actions'
+import football from './football'
 
 function form (state = {}, action) {
   switch (action.type) {
@@ -60,7 +60,7 @@ const rootReducer = combineReducers({
   authFormView: authForm,
   auth,
   tempUser,
-  teams,
+  football,
   error: globalError
 })
 

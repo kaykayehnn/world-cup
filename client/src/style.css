@@ -74,7 +74,7 @@ a {
   }
 }
 
-.heading {
+.navbar .heading {
   line-height: 100px;
   height: 100px;
 }
@@ -92,7 +92,7 @@ a {
   .navbar-icon {
     display: block;
   }
-  .heading {
+  .navbar .heading {
     display: none;
   }
   .navbar .title {
@@ -355,25 +355,25 @@ avatar.active {
 .dashboard {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
 
 @media screen and (min-width: 500px) {
   .dashboard {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (min-width: 850px) {
   .dashboard {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media screen and (min-width: 1150px) {
   .dashboard {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -397,9 +397,12 @@ avatar.active {
 }
 
 .team-crest {
-  margin: 0 7.5%;
   border: 1px solid rgb(154, 154, 154);
   border-radius: 50%;
+}
+
+.team .team-crest {
+  margin: 0 7.5%;
 }
 
 .team-name {
@@ -410,21 +413,79 @@ avatar.active {
   text-align: center;
 }
 
-.team-stats {
+.team .team-stats {
   display: flex;
   margin-top: 5px;
   justify-content: space-evenly;
 }
 
-.team-stats div div {
+.team .team-stats div div {
   text-align: center;
 }
 
-/* .team-stats>* {
-  border-left: 1px solid #999999;
-  border-right: 1px solid #999999;
-} */
+.team-details {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.team-details .heading {
+  margin-bottom: 20px;
+  font-size: 3em;
+  flex: 0 0 100%;
+}
+
+.team-details .wrapper {
+  flex: 1 1 0;
+}
+
+.team-details .team-crest {
+  max-width: 175px;
+  margin: 0 auto;
+  display: block;
+}
+
+.team-details .team-stats {
+  display: flex;
+  margin-left: 20px;
+  border: 2px solid #999999;
+  border-radius: 15px;
+  max-width: 500px;
+  font-size: 2em;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 2 1 0;
+}
+
+.team-details .stat-icon {
+  width: 50px;
+  height: auto;
+}
+
+.team-details .team-stats div div {
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  .team-details .wrapper {
+    flex: 0 0 100%;
+  }
+  .team-details .team-crest {
+    max-width: 120px;
+  }
+  .team-details .team-stats {
+    margin: 20px 0px;
+  }
+  .team-details .stat-icon {
+    margin-top: 10px;
+    width: 35px;
+  }
+}
 
 .hidden {
   display: none;
+}
+
+.centered {
+  text-align: center;
 }
