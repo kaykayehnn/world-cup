@@ -13,6 +13,7 @@ module.exports = (app) => {
 
   app.get('/api/teams', onlyAuthenticated, controllers.teams.getTeams)
   app.get('/api/teams/:teamName', onlyAuthenticated, controllers.teams.getTeamMatches)
+  app.get('/api/matches/:matchId', onlyAuthenticated, controllers.teams.getMatchById)
 
   app.get('/*', controllers.home.index)
 

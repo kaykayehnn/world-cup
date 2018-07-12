@@ -37,3 +37,9 @@ exports.getTeamMatches = (teamName) => cacheChecker(COMPETITION_MATCHES,
     let stats = matchesToStats(data)[teamName]
     return { matches, stats }
   }, getMatches)
+
+exports.getMatch = (matchId) => cacheChecker(COMPETITION_MATCHES,
+  (data) => {
+    let match = data.matches.find(m => m.id === matchId)
+    return match
+  }, getMatches)
