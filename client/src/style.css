@@ -462,6 +462,10 @@ avatar.active {
   height: auto;
 }
 
+.team-details .stat-icon.smaller {
+  transform: scale(0.9) translateY(5px);
+}
+
 .team-details .team-stats div div {
   text-align: center;
 }
@@ -480,6 +484,62 @@ avatar.active {
     margin-top: 10px;
     width: 35px;
   }
+}
+
+.matches {
+  margin-top: 20px;
+}
+
+.matches .match {
+  display: flex;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  justify-content: center;
+}
+
+.matches .match:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.match .team-crest {
+  max-height: 35px;
+  margin: 0 10px;
+  width: auto;
+}
+
+.match .match-summary {
+  margin: auto 0px;
+  font-size: 1.30em;
+}
+
+.match {
+  position: relative;
+  transition: 0.3s;
+}
+
+.match:hover {
+  background: #F2F2F2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.match .result {
+  position: absolute;
+  top: 25%;
+}
+
+.match .flex {
+  justify-content: center;
+  flex: 1;
+}
+
+.match .flex:first-child {
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.match .flex:last-child {
+  justify-content: flex-start;
+  margin-left: 10px;
 }
 
 .hidden {

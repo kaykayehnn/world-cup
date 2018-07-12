@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import Match from './Match'
@@ -12,31 +12,32 @@ class TeamDetails extends Component {
   render () {
     const { team: { name, matches, stats } } = this.props
 
-    if (!matches) {
+    if (!matches) { // TODO shows old data on reload
       return null
     }
 
+    let matchNodes = matches.map(m => <Match key={m.id} data={m} />)
+
     return (
-      <div className='team-details'>
-        <div className='heading centered'>{name}</div>
-        <div className='wrapper'>
-          <TeamCrest name={name} />
-        </div>
-        <div className='team-stats'>
-          <div>
+      <Fragment>
+        <div className='team-details'>
+          <div className='heading centered'>{name}</div>
+          <div className='wrapper'>
+            <TeamCrest name={name} />
+          </div>
+          <div className='team-stats'>
             <div><img className='stat-icon' src='/public/images/gold-medal.svg' /></div>
             <div>{stats.wins}</div>
-          </div>
-          <div>
-            <div><img className='stat-icon' src='/public/images/close.svg' /></div>
+            <div><img className='stat-icon smaller' src='/public/images/close.svg' /></div>
             <div>{stats.draws}</div>
-          </div>
-          <div>
             <div><img className='stat-icon' src='/public/images/silver-medal.svg' /></div>
             <div>{stats.losses}</div>
           </div>
         </div>
-      </div>
+        <div className='matches'>
+          {matchNodes}
+        </div>
+      </Fragment>
     )
   }
 }
