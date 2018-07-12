@@ -7,16 +7,18 @@ import TeamCrest from '../common/TeamCrest'
 class TeamDetails extends Component {
   componentDidMount () {
     this.props.fetchTeamDetails()
+
+    this.hasMounted = true
   }
 
   render () {
-    const { team: { name, matches, stats } } = this.props
+    const { team: { name, matches, stats }, history } = this.props
 
-    if (!matches) { // TODO shows old data on reload
+    if (!this.hasMounted) {
       return null
     }
 
-    let matchNodes = matches.map(m => <Match key={m.id} data={m} />)
+    let matchNodes = matches.map(m => <Match key={m.id} data={m} onClick={() => history.push(`/matches/${m.id}`)} />)
 
     return (
       <Fragment>

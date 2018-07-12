@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import TeamCrest from '../common/TeamCrest'
 
-const Match = ({ data }) => (
-  <div className='match interactive'>
+const Match = ({ data, ...props }) => data.status !== 'SCHEDULED' && (
+  <div className='match interactive-sm' {...props}>
     <div className='flex'>
-      <div className='match-summary'>{data.homeTeam.name}</div>
+      <div className='match-summary hide-sm'>{data.homeTeam.name}</div>
       <TeamCrest name={data.homeTeam.name} />
     </div>
     <div className='result'>
@@ -14,7 +14,7 @@ const Match = ({ data }) => (
     </div>
     <div className='flex'>
       <TeamCrest name={data.awayTeam.name} />
-      <div className='match-summary'>{data.awayTeam.name}</div>
+      <div className='match-summary hide-sm'>{data.awayTeam.name}</div>
     </div>
   </div>
 )

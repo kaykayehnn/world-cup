@@ -98,6 +98,9 @@ a {
   .navbar .title {
     margin-left: 0px;
   }
+  .hide-sm {
+    display: none;
+  }
 }
 
 .menu {
@@ -182,6 +185,10 @@ avatar.active {
 
 .interactive:active {
   transform: scale(1.05);
+}
+
+.interactive-sm:active {
+  transform: scale(1.025);
 }
 
 .navbar-link:active,
@@ -462,10 +469,6 @@ avatar.active {
   height: auto;
 }
 
-.team-details .stat-icon.smaller {
-  transform: scale(0.9) translateY(5px);
-}
-
 .team-details .team-stats div div {
   text-align: center;
 }
@@ -515,6 +518,7 @@ avatar.active {
 .match {
   position: relative;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .match:hover {
