@@ -5,6 +5,7 @@ import Home from './HomeRedirecter'
 import Credits from '../components/Credits'
 import Dashboard from './DashboardContainer'
 import TeamDetails from './TeamContainer'
+import MatchDetails from './MatchContainer'
 import Profile from './Profile'
 import Logout from './Logout'
 
@@ -21,6 +22,7 @@ export default (props) => (
         <PrivateRoute exact path='/team/:teamName' component={TeamDetails} />
         <PrivateRoute exact path='/profile' component={Profile} />
         <PrivateRoute exact path='/logout' component={Logout} />
+        <PrivateRoute exact path='/matches/:matchId' component={MatchDetails} />
         <Route render={() => <h1>404</h1>} />
       </Switch>
     </Fragment>

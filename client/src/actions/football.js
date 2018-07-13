@@ -8,7 +8,7 @@ export function fetchTeamsSuccess (teams) {
 
 export function fetchTeams () {
   return dispatch => {
-    requester.get('/teams')
+    return requester.get('/teams')
       .then(res => {
         dispatch(fetchTeamsSuccess(res.data))
       }).catch(err => {
@@ -36,6 +36,23 @@ export function fetchTeamDetails (teamName) {
         dispatch(fetchTeamDetailsSuccess(teamName, res.data))
       }).catch(() => {
         dispatch(fetchTeamDetailsError(`${teamName} is not a valid team`))
+      })
+  }
+}
+
+export const FETCH_MATCH_DETAILS_SUCCESS = 'FETCH_MATCH_DETAILS_SUCCESS'
+
+export function fetchMatchDetailsSuccess (matchDetails) {
+  return { type: FETCH_MATCH_DETAILS_SUCCESS, matchDetails }
+}
+
+export function fetchMatchDetails (matchId) {
+  return dispatch => {
+    return requester.get(`/matches/${matchId}`)
+      .then(res => {
+        dispatch(fetchMatchDetailsSuccess(res.data))
+      }).catch(er => {
+        console.log(er) // TODO not handled
       })
   }
 }

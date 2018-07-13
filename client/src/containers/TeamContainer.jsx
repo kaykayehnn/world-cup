@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   let teamName = ownProps.match.params.teamName
 
   return {
-    fetchTeamDetails: () => dispatch(fetchTeamDetails(teamName))
+    fetchData: () => dispatch(fetchTeamDetails(teamName))
   }
 }
 

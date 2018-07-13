@@ -412,7 +412,7 @@ avatar.active {
   margin: 0 7.5%;
 }
 
-.team-name {
+.team .team-name {
   padding: 2px;
   border-top: 1px solid #999999;
   border-bottom: 1px solid #999999;
@@ -544,6 +544,76 @@ avatar.active {
 .match .flex:last-child {
   justify-content: flex-start;
   margin-left: 10px;
+}
+
+.spinner {
+  width: 10%;
+  max-width: 80px;
+  min-width: 40px;
+  display: block;
+  margin: 20px auto;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.match-details {
+  margin-top: 20px;
+}
+
+.match-title .team-crest {
+  width: 75px;
+  vertical-align: middle;
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .match-title .team-crest {
+    display: inline-block;
+  }
+  .match-title .team-name {
+    display: none;
+  }
+}
+
+.match-title {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.match-final-result {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1.75em;
+}
+
+.match-final-result .team-crest {
+  width: 1.75em;
+  height: auto;
+  vertical-align: middle;
+}
+
+.match-stats {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5em;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.match-stats>* {
+  padding: 10px;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  flex: 1;
 }
 
 .hidden {

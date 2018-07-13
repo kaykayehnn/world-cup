@@ -1,8 +1,9 @@
-import { FETCH_TEAMS_SUCCESS, FETCH_TEAM_DETAILS_SUCCESS } from '../actions/football'
+import { FETCH_TEAMS_SUCCESS, FETCH_TEAM_DETAILS_SUCCESS, FETCH_MATCH_DETAILS_SUCCESS } from '../actions/football'
 
 const initialState = {
   teams: [],
-  teamDetails: {}
+  teamDetails: {},
+  matchDetails: {}
 }
 
 function stats (state = initialState, action) {
@@ -11,6 +12,8 @@ function stats (state = initialState, action) {
       return { ...state, teams: action.teams }
     case FETCH_TEAM_DETAILS_SUCCESS:
       return { ...state, teamDetails: action.teamDetails }
+    case FETCH_MATCH_DETAILS_SUCCESS:
+      return { ...state, matchDetails: action.matchDetails }
     default:
       return state
   }
