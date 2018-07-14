@@ -59,7 +59,7 @@ export function initiateLogin () {
     let { email } = getState().form
 
     dispatch(authErrorClear())
-    requester.get(`/users?email=${email}`)
+    requester.get(`/users/${email}`)
       .then(res => {
         dispatch(saveTemporaryUser(res.data))
         dispatch(authFormStateChange('PASSWORD'))

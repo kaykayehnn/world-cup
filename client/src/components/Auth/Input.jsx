@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { toNormalCase } from '../utilities/convertCase'
+import { toNormalCase } from '../../utilities/convertCase'
 
 const isPasswordField = /password/i
 

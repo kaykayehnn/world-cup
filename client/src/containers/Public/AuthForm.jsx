@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import LoginForm from '../components/LoginForm'
-import RegisterForm from '../components/RegisterForm'
-import { formChange, authFormStateChange, createAccount, initiateLogin, login, authErrorClear } from '../actions/'
+import LoginForm from '../../components/Auth/LoginForm'
+import RegisterForm from '../../components/Auth/RegisterForm'
+import { formChange, authFormStateChange, createAccount, initiateLogin, login, authErrorClear } from '../../actions/'
 
 // Auth form can be in 3 different states:
 // 1. Create account - email, password, repeat

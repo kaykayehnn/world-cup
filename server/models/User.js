@@ -10,11 +10,16 @@ let userSchema = new mongoose.Schema({
   hashedPass: String,
   roles: [String],
   avatarIx: { type: Number, required: true, min: 0, max: 26, default: randomFactory(0, avatars.length - 1) }
-})
+}, { toJSON: { virtuals: true } })
 
 userSchema.virtual('avatarUrl')
   .get(function () {
     return avatars[this.avatarIx]
+  })
+
+userSchema.virtual('creationDate')
+  .get(function () {
+    return parseInt(this._id.toString().substring(0, 8), 16) * 1000
   })
 
 userSchema.method({
@@ -25,7 +30,8 @@ userSchema.method({
     return {
       email: this.email,
       roles: this.roles,
-      avatarUrl: this.avatarUrl
+      avatarUrl: this.avatarUrl,
+      creationDate: this.creationDate
     }
   }
 })

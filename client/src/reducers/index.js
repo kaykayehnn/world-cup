@@ -22,12 +22,12 @@ function authForm (state = 'EMAIL', action) {
   }
 }
 
-function auth (state = {}, action) {
+function auth (state = null, action) {
   switch (action.type) {
     case LOGIN:
       return action.auth
     case LOGOUT:
-      return {}
+      return null
     default:
       return state
   }

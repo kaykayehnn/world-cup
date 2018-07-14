@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import Home from './HomeRedirecter'
-import Credits from '../components/Credits'
-import Dashboard from './DashboardContainer'
-import TeamDetails from './TeamContainer'
-import MatchDetails from './MatchContainer'
-import Profile from './Profile'
-import Logout from './Logout'
+import Home from './Public/Home'
+import Credits from '../components/common/Credits'
+import Dashboard from './Private/DashboardContainer'
+import TeamDetails from './Private/TeamContainer'
+import MatchDetails from './Private/MatchContainer'
+import Profile from './Private/Profile'
+import Logout from './Private/Logout'
 
 import PrivateRoute from '../HOC/PrivateRoute'
 

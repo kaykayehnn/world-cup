@@ -2,17 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
-import TeamCrest from './common/TeamCrest'
-import withLoading from '../HOC/withLoading'
+import TeamCrest from '../common/TeamCrest'
+import withLoading from '../../HOC/withLoading'
 
 const MatchDetails = ({ matchDetails }) => {
   const { homeTeam, awayTeam, score, status, group, utcDate } = matchDetails
 
   const scheduled = status === 'SCHEDULED'
   const draw = score.winner === 'DRAW'
-  const finished = !!score.fullTime.homeTeam
-  const extraTime = !!score.extraTime.homeTeam
-  const penalties = !!score.penalties.homeTeam
+  const finished = score.fullTime.homeTeam != null
+  const extraTime = score.extraTime.homeTeam != null
+  const penalties = score.penalties.homeTeam != null
 
   const finalResult = scheduled
     ? null
@@ -47,15 +47,15 @@ const MatchDetails = ({ matchDetails }) => {
       {finished && <div className='match-stats'>
         <div>
           <div>Half time</div>
-          <div>{score.halfTime.homeTeam}:{score.halfTime.homeTeam}</div>
+          <div>{score.halfTime.homeTeam}:{score.halfTime.awayTeam}</div>
         </div>
         <div>
           <div>Full time</div>
-          <div>{score.fullTime.homeTeam}:{score.fullTime.homeTeam}</div>
+          <div>{score.fullTime.homeTeam}:{score.fullTime.awayTeam}</div>
         </div>
         {extraTime && <div>
           <div>Extra time</div>
-          <div>{score.fullTime.homeTeam + score.extraTime.homeTeam}:{score.fullTime.awayTeam + score.extraTime.homeTeam}</div>
+          <div>{score.fullTime.homeTeam + score.extraTime.homeTeam}:{score.fullTime.awayTeam + score.extraTime.awayTeam}</div>
         </div>}
         {penalties && <div>
           <div>Penalties</div>

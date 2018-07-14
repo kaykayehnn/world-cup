@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Input from './Input'
-import { emailRgx, passwordRgx } from '../utilities/validation'
-import preventDefaultAndCall from '../utilities/preventDefault'
+import { emailRgx, passwordRgx } from '../../utilities/validation'
+import preventDefaultAndCall from '../../utilities/preventDefault'
 
 const inputFields = [
   {

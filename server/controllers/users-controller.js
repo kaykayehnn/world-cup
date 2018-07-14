@@ -68,7 +68,7 @@ exports.logout = (req, res, next) => {
 }
 
 exports.getByEmail = (req, res) => {
-  let { email } = req.query
+  let email = req.params.userEmail
   User.findOne({ email })
     .then(user => {
       if (!user) {
@@ -76,5 +76,13 @@ exports.getByEmail = (req, res) => {
       }
 
       res.json(user.toPayload())
+    })
+}
+
+exports.getAllUsers = (req, res) => {
+  User.find(null, { salt: 0, hashedPass: 0, __v: 0 })
+    .lean()
+    .then(users => {
+      res.json(users)
     })
 }
