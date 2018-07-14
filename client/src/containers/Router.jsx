@@ -12,12 +12,13 @@ import Logout from './Private/Logout'
 import Credits from '../components/Common/Credits'
 import Forbidden from '../components/Common/Forbidden'
 
+import ErrorBoundary from '../HOC/ErrorBoundary'
 import PrivateRoute from '../HOC/PrivateRoute'
 import AdminRoute from '../HOC/AdminRoute'
 
 export default (props) => (
   <BrowserRouter>
-    <Fragment>
+    <ErrorBoundary>
       {props.children}
       <Switch>
         <Route exact path='/' component={Home} />
@@ -34,6 +35,6 @@ export default (props) => (
         <Route exact path='/credits' component={Credits} />
         <Route render={() => <h1>404</h1>} />
       </Switch>
-    </Fragment>
+    </ErrorBoundary>
   </BrowserRouter>
 )
