@@ -33,7 +33,7 @@ const LoginForm = ({ values, inputChange, switchState, createAccount, error, cle
   return (
     <div className='welcome-modal'>
       <div className='auth-title'>
-        <h2 className='title'>Sign in</h2>
+        <h2 className='title'>Sign up</h2>
       </div>
       <div className={`auth-error ${error && 'visible'}`} onClick={clearError}>{error || 'Error'}</div>
       <form className='auth-form' onSubmit={preventDefaultAndCall(createAccount)}>
