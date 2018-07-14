@@ -9,7 +9,8 @@ let userSchema = new mongoose.Schema({
   salt: String,
   hashedPass: String,
   roles: [String],
-  avatarIx: { type: Number, required: true, min: 0, max: 26, default: randomFactory(0, avatars.length - 1) }
+  avatarIx: { type: Number, required: true, min: 0, max: 26, default: randomFactory(0, avatars.length - 1) },
+  favouriteTeams: { type: [String], default: [] }
 }, { toJSON: { virtuals: true } })
 
 userSchema.virtual('avatarUrl')
@@ -28,9 +29,11 @@ userSchema.method({
   },
   toPayload: function () {
     return {
+      _id: this._id,
       email: this.email,
       roles: this.roles,
       avatarUrl: this.avatarUrl,
+      favouriteTeams: this.favouriteTeams,
       creationDate: this.creationDate
     }
   }

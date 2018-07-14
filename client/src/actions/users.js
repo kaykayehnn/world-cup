@@ -143,3 +143,17 @@ export function deleteUser (_id) {
       })
   }
 }
+
+export function toggleFavourite (teamName) {
+  return (dispatch, getState) => {
+    let state = getState()
+    let user = state.auth.user
+    let teams = user.favouriteTeams
+
+    if (teams.indexOf(teamName) >= 0) teams = teams.filter(t => t !== teamName)
+    else teams.push(teamName)
+
+    return requester.put(`/users/${user._id}/teams`, { teams })
+      .then(handleLogin(dispatch))
+  }
+}

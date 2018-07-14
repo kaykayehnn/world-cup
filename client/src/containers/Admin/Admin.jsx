@@ -20,6 +20,7 @@ const Admin = ({ users }) => {
             <th>Email</th>
             <th>__V</th>
             <th>Roles</th>
+            <th>Favourite teams</th>
             <th>Avatar Index</th>
             <th>Actions</th>
           </tr>

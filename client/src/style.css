@@ -431,6 +431,7 @@ avatar.active {
 }
 
 .team-details {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
@@ -486,6 +487,25 @@ avatar.active {
   .team-details .stat-icon {
     margin-top: 10px;
     width: 35px;
+  }
+}
+
+.team-details .favourite {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3em;
+  height: auto;
+  cursor: pointer;
+}
+
+.team-details .favourite:active {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 400px) {
+  .team-details .favourite {
+    top: 111px;
   }
 }
 
@@ -642,6 +662,23 @@ avatar.active {
 
 .admin-table td {
   border: 1px solid #999999;
+}
+
+.profile .heading {
+  margin-top: 20px;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .profile .heading {
+    font-size: 1.75em;
+  }
+}
+
+.profile .creation-date {
+  margin: auto;
+  font-size: 1.5em;
 }
 
 .hidden {

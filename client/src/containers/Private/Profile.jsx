@@ -1,3 +1,7 @@
-import React from 'react'
+import { connect } from 'react-redux'
 
-export default () => 0
+import Profile from '../../components/Common/Profile'
+
+const mapStateToProps = state => ({ ...state.auth.user })
+
+export default connect(mapStateToProps, null)(Profile)

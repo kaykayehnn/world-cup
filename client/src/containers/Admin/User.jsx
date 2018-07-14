@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { editUser, deleteUser } from '../../actions/users'
-import { roleArrayValidator, avatarIxRgx } from '../../utilities/validation'
+import { stringArrayValidator, avatarIxRgx } from '../../utilities/validation'
 
 class User extends Component {
   constructor (props) {
@@ -11,7 +11,8 @@ class User extends Component {
 
     this.state = {
       roles: JSON.stringify(props.roles),
-      avatarIx: JSON.stringify(this.props.avatarIx)
+      avatarIx: JSON.stringify(this.props.avatarIx),
+      favouriteTeams: JSON.stringify(this.props.favouriteTeams)
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -25,8 +26,9 @@ class User extends Component {
   callEditUser () {
     const roles = JSON.parse(this.state.roles)
     const avatarIx = JSON.parse(this.state.avatarIx)
+    const favouriteTeams = JSON.parse(this.state.favouriteTeams)
 
-    this.props.editUser({ roles, avatarIx })
+    this.props.editUser({ roles, favouriteTeams, avatarIx })
   }
 
   render () {
@@ -34,7 +36,9 @@ class User extends Component {
 
     let validData
     try {
-      if (roleArrayValidator(JSON.parse(this.state.roles)) && avatarIxRgx.test(this.state.avatarIx)) validData = true // should replace constant
+      if (stringArrayValidator(JSON.parse(this.state.roles)) &&
+        stringArrayValidator(JSON.parse(this.state.favouriteTeams)) &&
+        avatarIxRgx.test(this.state.avatarIx)) validData = true
     } catch (e) { }
 
     return (
@@ -43,7 +47,8 @@ class User extends Component {
         <td>{email}</td>
         <td>{__v}</td>
         <td><input name='roles' value={this.state.roles} onChange={this.handleChange} /></td>
-        <td><input name='avatarIx' value={this.state.avatarIx} onChange={this.handleChange} /></td>
+        <td><input name='favouriteTeams' value={this.state.favouriteTeams} onChange={this.handleChange} /></td>
+        <td><input name='avatarIx' size={2} value={this.state.avatarIx} onChange={this.handleChange} /></td>
         <td>
           <button disabled={!validData} onClick={this.callEditUser}>Edit</button>
           <button onClick={this.props.deleteUser}>Delete</button>
@@ -58,6 +63,7 @@ User.propTypes = {
   email: PropTypes.string.isRequired,
   __v: PropTypes.number.isRequired,
   roles: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  favouriteTeams: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   avatarIx: PropTypes.number.isRequired,
   editUser: PropTypes.func.isRequired,
   deleteUser: PropTypes.func.isRequired

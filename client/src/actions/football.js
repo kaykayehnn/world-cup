@@ -11,8 +11,6 @@ export function fetchTeams () {
     return requester.get('/teams')
       .then(res => {
         dispatch(fetchTeamsSuccess(res.data))
-      }).catch(err => {
-        console.log(err) // TODO needs to be handled
       })
   }
 }
@@ -23,10 +21,10 @@ export function fetchTeamDetailsSuccess (teamName, teamDetails) {
   return { type: FETCH_TEAM_DETAILS_SUCCESS, teamDetails }
 }
 
-export const FETCH_TEAM_DETAILS_ERROR = 'FETCH_TEAM_DETAILS_ERROR'
+export const FETCH_ERROR = 'FETCH_ERROR'
 
-export function fetchTeamDetailsError (err) {
-  return { type: FETCH_TEAM_DETAILS_ERROR, err } // TODO needs to be handled
+export function fetchError (err) {
+  return { type: FETCH_ERROR, err }
 }
 
 export function fetchTeamDetails (teamName) {
@@ -35,7 +33,7 @@ export function fetchTeamDetails (teamName) {
       .then(res => {
         dispatch(fetchTeamDetailsSuccess(teamName, res.data))
       }).catch(() => {
-        dispatch(fetchTeamDetailsError(`${teamName} is not a valid team`))
+        dispatch(fetchError(`Team ${teamName} doesn't exist`))
       })
   }
 }
@@ -52,7 +50,7 @@ export function fetchMatchDetails (matchId) {
       .then(res => {
         dispatch(fetchMatchDetailsSuccess(res.data))
       }).catch(er => {
-        console.log(er) // TODO not handled
+        dispatch(fetchError(`Match ${matchId} doesn't exist`))
       })
   }
 }

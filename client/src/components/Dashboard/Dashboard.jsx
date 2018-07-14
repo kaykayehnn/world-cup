@@ -11,7 +11,7 @@ const Dashboard = ({ teams }) => (
 )
 
 Dashboard.propTypes = {
-  teams: PropTypes.arrayOf(PropTypes.object)
+  teams: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired
 }
 
 export default withLoading(Dashboard)

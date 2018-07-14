@@ -10,6 +10,7 @@ module.exports = (app) => {
   app.post('/api/users', controllers.users.registerPost)
   app.post('/api/users/_login', controllers.users.loginPost)
   app.post('/api/users/_logout', onlyAuthenticated, controllers.users.logout)
+  app.put('/api/users/:userId/teams', onlyAuthenticated, controllers.users.setFavouriteTeams)
 
   app.get('/api/teams', onlyAuthenticated, controllers.teams.getTeams)
   app.get('/api/teams/:teamName', onlyAuthenticated, controllers.teams.getTeamMatches)

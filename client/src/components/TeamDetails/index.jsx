@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
+import Favourite from './Favourite'
 import Match from './Match'
 import TeamCrest from '../Common/TeamCrest'
 import withLoading from '../../HOC/withLoading'
@@ -13,6 +14,7 @@ const TeamDetails = ({ team: { name, matches, stats }, history }) => {
     <Fragment>
       <div className='team-details'>
         <div className='heading centered'>{name}</div>
+        <Favourite teamName={name} />
         <div className='wrapper'>
           <TeamCrest name={name} />
         </div>

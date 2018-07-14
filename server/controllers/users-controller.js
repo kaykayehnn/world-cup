@@ -52,7 +52,7 @@ exports.loginPost = (req, res, next) => {
       req.user = user.toPayload()
       return req.logIn()
     })
-    .then(data => res.end(JSON.stringify(data)))
+    .then(data => res.end(data))
     .catch(next)
 }
 
@@ -87,11 +87,13 @@ exports.getAllUsers = (req, res) => {
     })
 }
 
+const invalidateArr = (arr) => !Array.isArray(arr) || arr.some(a => typeof a !== 'string')
+
 exports.editUser = (req, res) => {
   let { userId } = req.params
-  let { roles, avatarIx } = req.body
+  let { roles, favouriteTeams, avatarIx } = req.body
 
-  if (!Array.isArray(roles) || roles.some(a => typeof a !== 'string')) {
+  if (invalidateArr(roles) || invalidateArr(favouriteTeams)) {
     return void res.end()
   }
 
@@ -100,6 +102,7 @@ exports.editUser = (req, res) => {
       if (!user) return void res.end()
 
       user.roles = roles
+      user.favouriteTeams = favouriteTeams
       user.avatarIx = avatarIx
 
       user.save()
@@ -113,4 +116,24 @@ exports.deleteUser = (req, res, next) => {
   User.findByIdAndRemove(userId)
     .then(() => res.end())
     .catch(() => next(new Error(`User ${userId} doesn't exist`)))
+}
+
+exports.setFavouriteTeams = (req, res) => {
+  let { userId } = req.params
+  let { teams } = req.body
+  if (!Array.isArray(teams) || teams.some(a => typeof a !== 'string')) {
+    return void res.end()
+  }
+
+  User.findById(userId)
+    .then(user => {
+      if (!user) res.end()
+
+      user.favouriteTeams = teams
+      req.user = user.toPayload()
+
+      user.save()
+        .then(() => req.logIn())
+        .then(data => res.json(data))
+    })
 }
