@@ -664,6 +664,10 @@ avatar.active {
   border: 1px solid #999999;
 }
 
+.profile .profile-img {
+  max-height: 150px;
+}
+
 .profile .heading {
   margin-top: 20px;
   font-size: 2.5em;
