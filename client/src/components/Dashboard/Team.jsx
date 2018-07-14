@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import TeamCrest from '../common/TeamCrest'
+import TeamCrest from '../Common/TeamCrest'
 
 const Team = ({ name, stats: { wins, draws, losses } }) => (
   <Link to={`/team/${name}`} >

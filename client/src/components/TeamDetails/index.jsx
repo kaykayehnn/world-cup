@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import Match from './Match'
-import TeamCrest from '../common/TeamCrest'
+import TeamCrest from '../Common/TeamCrest'
 import withLoading from '../../HOC/withLoading'
 
 const TeamDetails = ({ team: { name, matches, stats }, history }) => {

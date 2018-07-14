@@ -16,6 +16,8 @@ module.exports = (app) => {
   app.get('/api/matches/:matchId', onlyAuthenticated, controllers.teams.getMatchById)
 
   app.get('/api/users', onlyAdmins, controllers.users.getAllUsers)
+  app.put('/api/users/:userId', onlyAdmins, controllers.users.editUser)
+  app.delete('/api/users/:userId', onlyAdmins, controllers.users.deleteUser)
 
   app.get('/*', controllers.home.index)
 

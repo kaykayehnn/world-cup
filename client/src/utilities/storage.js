@@ -7,7 +7,7 @@ export function saveSession (session) {
 }
 
 export function getSession () {
-  return JSON.parse(storage.getItem(AUTH_KEY)) || {}
+  return JSON.parse(storage.getItem(AUTH_KEY)) || { user: {} }
 }
 
 export function clearSession () {

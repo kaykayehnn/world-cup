@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { FORM_INPUT_CHANGE, AUTH_FORM_CHANGE, LOGIN, TEMPORARY_USER_SAVE, LOGOUT, TEMPORARY_USER_CLEAR, FORM_CLEAR, AUTH_ERROR, AUTH_ERROR_CLEAR } from '../actions'
 import football from './football'
+import admin from './admin'
 
 function form (state = {}, action) {
   switch (action.type) {
@@ -22,12 +23,13 @@ function authForm (state = 'EMAIL', action) {
   }
 }
 
-function auth (state = null, action) {
+const authInitialState = { user: {} }
+function auth (state = authInitialState, action) {
   switch (action.type) {
     case LOGIN:
       return action.auth
     case LOGOUT:
-      return null
+      return authInitialState
     default:
       return state
   }
@@ -61,7 +63,8 @@ const rootReducer = combineReducers({
   auth,
   tempUser,
   football,
-  error: globalError
+  error: globalError,
+  admin
 })
 
 export default rootReducer

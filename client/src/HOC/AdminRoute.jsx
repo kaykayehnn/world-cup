@@ -4,12 +4,12 @@ import { Route, Redirect } from 'react-router-dom'
 
 const PrivateRoute = (props) => {
   const mapStateToProps = state => ({
-    isLoggedIn: !!state.auth.user.email
+    isAdmin: state.auth.user.roles && state.auth.user.roles.indexOf('admin') >= 0
   })
 
-  const Private = connect(mapStateToProps)(({ isLoggedIn }) => {
-    if (!isLoggedIn) {
-      return <Redirect to='/' />
+  const Private = connect(mapStateToProps)(({ isAdmin }) => {
+    if (!isAdmin) {
+      return <Redirect to='/forbidden' />
     }
     return <Route {...props} />
   })

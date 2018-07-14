@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import Spinner from '../components/common/Spinner'
+import Spinner from '../components/Common/Spinner'
 
 const STATE_LOADED = 'STATE_LOADED'
 const STATE_LOADING = 'STATE_LOADING'

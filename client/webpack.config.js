@@ -32,7 +32,7 @@ const config = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      moment: path.join(__dirname, 'node_modules/moment/min/moment.min.js')
+      moment$: 'moment/moment.js'
     }
   },
   devtool: 'eval-source-map',

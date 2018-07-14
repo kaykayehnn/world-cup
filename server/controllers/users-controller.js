@@ -80,9 +80,37 @@ exports.getByEmail = (req, res) => {
 }
 
 exports.getAllUsers = (req, res) => {
-  User.find(null, { salt: 0, hashedPass: 0, __v: 0 })
+  User.find(null, { salt: 0, hashedPass: 0 })
     .lean()
     .then(users => {
       res.json(users)
     })
+}
+
+exports.editUser = (req, res) => {
+  let { userId } = req.params
+  let { roles, avatarIx } = req.body
+
+  if (!Array.isArray(roles) || roles.some(a => typeof a !== 'string')) {
+    return void res.end()
+  }
+
+  User.findById(userId)
+    .then(user => {
+      if (!user) return void res.end()
+
+      user.roles = roles
+      user.avatarIx = avatarIx
+
+      user.save()
+        .then(() => res.json(user))
+    })
+}
+
+exports.deleteUser = (req, res, next) => {
+  let { userId } = req.params
+
+  User.findByIdAndRemove(userId)
+    .then(() => res.end())
+    .catch(() => next(new Error(`User ${userId} doesn't exist`)))
 }

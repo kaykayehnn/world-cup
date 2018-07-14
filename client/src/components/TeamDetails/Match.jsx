@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import TeamCrest from '../common/TeamCrest'
+import TeamCrest from '../Common/TeamCrest'
 
 const Match = ({ data, ...props }) => (
   <div className='match interactive-sm' {...props}>

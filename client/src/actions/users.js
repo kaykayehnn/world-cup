@@ -36,8 +36,6 @@ const handleLogin = dispatch => res => {
   let authData = decodeUser(res.data)
   saveSession(authData)
 
-  // TODO could show welcome message
-
   dispatch(loginSuccess(authData))
 }
 
@@ -98,5 +96,50 @@ export function logout () {
         dispatch(formClear())
         dispatch(authFormStateChange('EMAIL'))
       }).catch(console.log)
+  }
+}
+
+export const FETCH_USERS_SUCCCESS = 'FETCH_USERS_SUCCCESS'
+
+export function fetchUsersSuccess (users) {
+  return { type: FETCH_USERS_SUCCCESS, users }
+}
+
+export function fetchUsers () {
+  return dispatch => {
+    return requester.get('/users')
+      .then(res => {
+        dispatch(fetchUsersSuccess(res.data))
+      })
+  }
+}
+
+export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS'
+
+export function editUserSuccess (data) {
+  return { type: EDIT_USER_SUCCESS, data }
+}
+
+export function editUser (_id, data) {
+  return dispatch => {
+    return requester.put(`/users/${_id}/`, data)
+      .then(res => {
+        dispatch(fetchUsers())
+      })
+  }
+}
+
+export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS'
+
+export function deleteUserSuccess () {
+  return { type: DELETE_USER_SUCCESS }
+}
+
+export function deleteUser (_id) {
+  return dispatch => {
+    return requester.delete(`/users/${_id}/`)
+      .then(res => {
+        dispatch(fetchUsers())
+      })
   }
 }
