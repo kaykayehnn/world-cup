@@ -2,7 +2,7 @@
 This is a coursework project for ReactJS Fundametals June 2018.
 
 ### General requirements
-- [ ] At least 3 different dynamic pages (pages like about, contacts, etc. do not count towards that figure)
+- [x] At least 3 different dynamic pages (pages like about, contacts, etc. do not count towards that figure)
 - [x] Use React.js for the client-side
 - [x] Communicate to a remote service (via REST, sockets, GraphQL, or a similar client-server technique)
 - [x] Implement authentication and user roles
@@ -12,8 +12,8 @@ This is a coursework project for ReactJS Fundametals June 2018.
 
 ### Other requirements
 - [x] Apply error handling and data validation to avoid crashes when invalid data is entered
-- [ ] Prevent security exploits (XSS, XSRF, Parameter Tampering, etc.)
-- [ ] Handle correctly special HTML characters and tags like <script>, line breaks, etc.
+- [x] Prevent security exploits (XSS, XSRF, Parameter Tampering, etc.)
+- [x] Handle correctly special HTML characters and tags like <script>, line breaks, etc.
 - [x] Use a source control system, like GitHub
 
 ### Optional Requirements
@@ -25,6 +25,6 @@ This is a coursework project for ReactJS Fundametals June 2018.
 - [x] Use a state management library like Flux or Redux
 - [x] Deploy the application in a cloud environment
 - [ ] Use a file storage cloud API, e.g. Dropbox, Google Drive or other for storing the files
-- [ ] Connect to an external API, like Google Maps, AccuWeather, etc.
+- [x] Connect to an external API, like Google Maps, AccuWeather, etc.
 - [x] Use of features of HTML 5 like Geolocation, Local Storage, SVG, Canvas, etc.
 - [ ] Anything that is not described in the assignment is a bonus if it has some practical use

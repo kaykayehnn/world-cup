@@ -74,7 +74,7 @@ a {
   }
 }
 
-.heading {
+.navbar .heading {
   line-height: 100px;
   height: 100px;
 }
@@ -92,11 +92,14 @@ a {
   .navbar-icon {
     display: block;
   }
-  .heading {
+  .navbar .heading {
     display: none;
   }
   .navbar .title {
     margin-left: 0px;
+  }
+  .hide-sm {
+    display: none;
   }
 }
 
@@ -144,6 +147,9 @@ a {
     background: #F2F2F2;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   }
+  avatar.active {
+    background: #F2F2F2;
+  }
   .last {
     order: 1;
   }
@@ -168,14 +174,21 @@ a {
 }
 
 .navbar-link:hover,
-.navbar-link.active,
-.avatar.active {
+.navbar-link.active {
   background: #F2F2F2;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+avatar.active {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .interactive:active {
   transform: scale(1.05);
+}
+
+.interactive-sm:active {
+  transform: scale(1.025);
 }
 
 .navbar-link:active,
@@ -349,25 +362,25 @@ a {
 .dashboard {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
 
 @media screen and (min-width: 500px) {
   .dashboard {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (min-width: 850px) {
   .dashboard {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media screen and (min-width: 1150px) {
   .dashboard {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -377,10 +390,11 @@ a {
   color: #807F78;
   border-radius: 10%;
   transition: 0.3s;
+  font-size: 1.20em;
 }
 
 .team .wrapper {
-  margin: 10px;
+  margin: 10px 10px 5px;
   cursor: pointer;
 }
 
@@ -394,14 +408,283 @@ a {
   border-radius: 50%;
 }
 
-.team-name {
-  padding-top: 5px;
+.team .team-crest {
+  margin: 0 7.5%;
+}
+
+.team .team-name {
+  padding: 2px;
   border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
   display: block;
   text-align: center;
-  font-size: 1.20em;
+}
+
+.team .team-stats {
+  display: flex;
+  margin-top: 5px;
+  justify-content: space-evenly;
+}
+
+.team .team-stats div div {
+  text-align: center;
+}
+
+.team-details {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.team-details .heading {
+  margin-bottom: 20px;
+  font-size: 3em;
+  flex: 0 0 100%;
+}
+
+.team-details .wrapper {
+  flex: 1 1 0;
+}
+
+.team-details .team-crest {
+  max-width: 175px;
+  margin: 0 auto;
+  display: block;
+}
+
+.team-details .team-stats {
+  display: flex;
+  margin-left: 20px;
+  border: 2px solid #999999;
+  border-radius: 15px;
+  max-width: 500px;
+  font-size: 2em;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 2 1 0;
+}
+
+.team-details .stat-icon {
+  width: 50px;
+  height: auto;
+}
+
+.team-details .team-stats div div {
+  text-align: center;
+}
+
+@media screen and (max-width: 400px) {
+  .team-details .wrapper {
+    flex: 0 0 100%;
+  }
+  .team-details .team-crest {
+    max-width: 120px;
+  }
+  .team-details .team-stats {
+    margin: 20px 0px;
+  }
+  .team-details .stat-icon {
+    margin-top: 10px;
+    width: 35px;
+  }
+}
+
+.team-details .favourite {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3em;
+  height: auto;
+  cursor: pointer;
+}
+
+.team-details .favourite:active {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 400px) {
+  .team-details .favourite {
+    top: 111px;
+  }
+}
+
+.matches {
+  margin-top: 20px;
+}
+
+.matches .match {
+  display: flex;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  justify-content: center;
+}
+
+.matches .match:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.match .team-crest {
+  max-height: 35px;
+  margin: 0 10px;
+  width: auto;
+}
+
+.match .match-summary {
+  margin: auto 0px;
+  font-size: 1.30em;
+}
+
+.match {
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.match:hover {
+  background: #F2F2F2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.match .result {
+  position: absolute;
+  top: 25%;
+}
+
+.match .flex {
+  justify-content: center;
+  flex: 1;
+}
+
+.match .flex:first-child {
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.match .flex:last-child {
+  justify-content: flex-start;
+  margin-left: 10px;
+}
+
+.spinner {
+  width: 10%;
+  max-width: 80px;
+  min-width: 40px;
+  display: block;
+  margin: 20px auto;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.match-details {
+  margin-top: 20px;
+}
+
+.match-title .team-crest {
+  width: 75px;
+  vertical-align: middle;
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .match-title .team-crest {
+    display: inline-block;
+  }
+  .match-title .team-name {
+    display: none;
+  }
+}
+
+.match-title {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.match-final-result {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 1.75em;
+}
+
+.match-final-result .team-crest {
+  width: 1.75em;
+  height: auto;
+  vertical-align: middle;
+}
+
+.match-stats {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5em;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.match-stats>* {
+  padding: 10px;
+  border: 1px solid #999999;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.forbidden-heading {
+  font-weight: 900;
+  font-size: 2em;
+  text-align: center;
+  padding: 20px;
+}
+
+.forbidden-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.admin-title {
+  font-size: 2.5em;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.admin-table {
+  width: 100%;
+  border: 1px solid #999999;
+}
+
+.admin-table td {
+  border: 1px solid #999999;
+}
+
+.profile .heading {
+  margin-top: 20px;
+  font-size: 2.5em;
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  .profile .heading {
+    font-size: 1.75em;
+  }
+}
+
+.profile .creation-date {
+  margin: auto;
+  font-size: 1.5em;
 }
 
 .hidden {
   display: none;
+}
+
+.centered {
+  text-align: center;
 }

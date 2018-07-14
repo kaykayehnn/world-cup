@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { hot } from 'react-hot-loader'
 
-import Navbar from './NavbarContainer'
+import Navbar from './Public/NavbarContainer'
 import Router from './Router'
 
 const Root = ({ store }) => (

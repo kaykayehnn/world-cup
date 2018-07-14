@@ -30,7 +30,10 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      moment$: 'moment/moment.js'
+    }
   },
   devtool: 'eval-source-map',
   devServer: {
