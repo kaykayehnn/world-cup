@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom'
 
 const PrivateRoute = (props) => {
   const mapStateToProps = state => ({
-    isAdmin: state.auth.user.roles && state.auth.user.roles.indexOf('admin') >= 0
+    isAdmin: state.auth.user && state.auth.user.roles.indexOf('admin') >= 0
   })
 
   const Private = connect(mapStateToProps)(({ isAdmin }) => {

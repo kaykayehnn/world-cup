@@ -23,7 +23,8 @@ function authForm (state = 'EMAIL', action) {
   }
 }
 
-const authInitialState = { user: {} }
+export const authInitialState = { user: null }
+
 function auth (state = authInitialState, action) {
   switch (action.type) {
     case LOGIN:

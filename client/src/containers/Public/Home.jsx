@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import AuthForm from './AuthForm'
 
-const HomeRedirecter = (props) => props.user.email
+const HomeRedirecter = (props) => props.user
   ? <Redirect to='/dashboard' />
   : <AuthForm {...props} />
 

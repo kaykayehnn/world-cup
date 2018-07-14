@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom'
 
 const PrivateRoute = (props) => {
   const mapStateToProps = state => ({
-    isLoggedIn: !!state.auth.user.email
+    isLoggedIn: !!state.auth.user
   })
 
   const Private = connect(mapStateToProps)(({ isLoggedIn }) => {

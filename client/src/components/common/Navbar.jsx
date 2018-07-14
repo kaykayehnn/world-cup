@@ -22,7 +22,7 @@ const adminLinks = [
 const linksArr = [publicLinks, privateLinks, adminLinks]
 
 const Navbar = ({ user, history }) => {
-  const isLoggedIn = !!user.email
+  const isLoggedIn = !!user
   const isAdmin = isLoggedIn && user.roles.indexOf('admin') >= 0
 
   let linkIx = +isLoggedIn + +isAdmin
