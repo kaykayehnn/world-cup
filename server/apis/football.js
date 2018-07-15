@@ -28,9 +28,10 @@ const cacheChecker = (key, onAvailable, onMissing) => {
 
 const getMatches = () => axios.get(MATCHES_URL)
   .then(res => res.data)
-  .catch(() => {
-    console.log('Football API error, trying again')
+  .catch((err) => {
+    console.log('Football API error, trying again', err)
     return axios.get(MATCHES_URL)
+      .then(res => res.data)
   })
 
 exports.getTeamStatistics = cacheChecker(COMPETITION_MATCHES, matchesToStats, getMatches)
