@@ -21,4 +21,5 @@ Root.propTypes = {
   store: PropTypes.object.isRequired
 }
 
-export default hot(module)(Root)
+let rootExport = process.env === 'production' ? Root : hot(module)(Root)
+export default rootExport
