@@ -14,7 +14,7 @@ const baseConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {
-      moment$: 'moment/moment.js'
+      moment$: path.join(basePath, 'node_modules/moment/min/moment.min.js')
     }
   }
 }
