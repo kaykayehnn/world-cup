@@ -393,6 +393,10 @@ avatar.active {
   font-size: 1.20em;
 }
 
+.team:last-child {
+  margin-bottom: 20px;
+}
+
 .team .wrapper {
   margin: 10px 10px 5px;
   cursor: pointer;
