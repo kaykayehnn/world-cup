@@ -20,15 +20,15 @@ const TeamDetails = ({ team: { name, matches, stats }, history }) => {
         </div>
         <div className='team-stats'>
           <div>
-            <img className='stat-icon' src='/public/images/gold-medal.svg' />
+            <img className='stat-icon' src='/images/gold-medal.svg' />
             <div>{stats.wins}</div>
           </div>
           <div>
-            <img className='stat-icon smaller' src='/public/images/close.svg' />
+            <img className='stat-icon smaller' src='/images/close.svg' />
             <div>{stats.draws}</div>
           </div>
           <div>
-            <img className='stat-icon' src='/public/images/silver-medal.svg' />
+            <img className='stat-icon' src='/images/silver-medal.svg' />
             <div>{stats.losses}</div>
           </div>
         </div>

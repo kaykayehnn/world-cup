@@ -6,7 +6,7 @@ import { toggleFavourite } from '../../actions/users'
 
 const Favourite = ({ isFavourite, toggle }) => (
   <img className='favourite'
-    src={`/public/images/${isFavourite ? 'star-full' : 'star-outline'}.svg`}
+    src={`/images/${isFavourite ? 'star-full' : 'star-outline'}.svg`}
     onClick={toggle} />
 )
 

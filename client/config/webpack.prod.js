@@ -33,7 +33,7 @@ const config = {
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
     new CopyWebpackPlugin([
-      { from: './public/**/*', to: './' }
+      { from: path.join(basePath, 'public/'), to: path.join(basePath, 'dist') }
     ]),
     new HTMLWebpackPlugin({ template: path.join(basePath, 'public/index.html') })
   ]

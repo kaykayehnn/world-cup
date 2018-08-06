@@ -43,7 +43,7 @@ const config = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
-      { from: './public/**/*', to: './' }
+      { from: path.join(basePath, 'public/'), to: path.join(basePath, 'dist') }
     ]),
     new HTMLWebpackPlugin({ template: path.join(basePath, 'public/index.html') })
   ]

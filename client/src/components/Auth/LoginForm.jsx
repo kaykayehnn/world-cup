@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Input from './Input'
 import { emailRgx, passwordRgx } from '../../utilities/validation'
 import preventDefaultAndCall from '../../utilities/preventDefault'
+import avatarToSvg from '../../utilities/avatarToSvg'
 
 const inputFields = {
   EMAIL: [
@@ -34,7 +35,7 @@ const LoginForm = ({ authFormView, values, inputChange, switchState, initiateLog
   const isPassword = authFormView === 'PASSWORD'
   const passwordOnlyLazy = () => (
     <div className='login-greeting'>
-      <img className='avatar-tiny' src={`/public/images/animals/${tempUser.avatarUrl}`} alt='Avatar' />
+      <img className='avatar-tiny' src={avatarToSvg(tempUser.avatarUrl)} alt='Avatar' />
       <h3 className='subtitle'>Hi {tempUser.email}</h3>
     </div>
   )
@@ -48,7 +49,7 @@ const LoginForm = ({ authFormView, values, inputChange, switchState, initiateLog
         {(isPassword || tempUser.email) &&
           <img className={`icon interactive ${!isPassword ? 'flipped' : ''}`}
             onClick={() => switchState(isPassword ? 'EMAIL' : 'PASSWORD')}
-            src='/public/images/left-arrow.svg' alt='Left arrow' />}
+            src='/images/left-arrow.svg' alt='Left arrow' />}
       </div>
       {isPassword && passwordOnlyLazy()}
       <div className={`auth-error ${error && 'visible'}`} onClick={clearError}>{error || 'Error'}</div>

@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import avatarToSvg from '../../utilities/avatarToSvg'
+
 const publicLinks = [
   { label: 'Sign in', location: '/' },
   { label: 'Credits', location: '/credits' }
@@ -34,10 +36,10 @@ const Navbar = ({ user, history }) => {
       <div className='navbar'>
         <div className='flex flex-center title'>
           <span className='heading'>Russia</span>
-          <img className='navbar-icon' src='/public/images/russia.svg' />
-          <img className='navbar-icon no-hide' src='/public/images/world-cup.svg' />
+          <img className='navbar-icon' src='/images/russia.svg' />
+          <img className='navbar-icon no-hide' src='/images/world-cup.svg' />
           <span className='heading'>2018</span>
-          <img className='navbar-icon' src='/public/images/calendar.svg' />
+          <img className='navbar-icon' src='/images/calendar.svg' />
         </div>
         <div className='menu flex'>
           {links.map(link => (
@@ -50,7 +52,7 @@ const Navbar = ({ user, history }) => {
           {isLoggedIn &&
             <NavLink className='avatar' exact to='/profile'>
               <img
-                src={`/public/images/animals/${user.avatarUrl}`} />
+                src={avatarToSvg(user.avatarUrl)} />
             </NavLink>}
         </div>
       </div>
