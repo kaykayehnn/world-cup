@@ -1,9 +1,8 @@
 # Russia World Cup 2018
-This is a coursework project for ReactJS Fundametals June 2018.
 
 ## Documentation
 
-The main topic of this project is the World Cup in Russia. The data about matches is provided by [Football-Data](https://www.football-data.org).
+The main topic of this project is the World Cup in Russia. Match data is provided by [Football-Data](https://www.football-data.org).
 
 Frameworks and technologies used on the backend:
 - ExpressJS
