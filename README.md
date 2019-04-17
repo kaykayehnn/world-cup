@@ -2,7 +2,7 @@
 
 ## Documentation
 
-The main topic of this project is the World Cup in Russia. Match data is provided by [Football-Data](https://www.football-data.org).
+The main theme of this project is the World Cup in Russia. Match data is provided by [Football-Data](https://www.football-data.org).
 
 Frameworks and technologies used on the backend:
 - ExpressJS
