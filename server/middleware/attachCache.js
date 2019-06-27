@@ -1,4 +1,4 @@
 module.exports = cache => (req, res, next) => {
-  req.cache = cache
-  next()
-}
+  req.cache = cache;
+  next();
+};

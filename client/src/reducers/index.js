@@ -1,63 +1,73 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
 
-import { FORM_INPUT_CHANGE, AUTH_FORM_CHANGE, LOGIN, TEMPORARY_USER_SAVE, LOGOUT, TEMPORARY_USER_CLEAR, FORM_CLEAR, AUTH_ERROR, AUTH_ERROR_CLEAR } from '../actions'
-import { FETCH_ERROR } from '../actions/football'
-import football from './football'
-import admin from './admin'
+import {
+  FORM_INPUT_CHANGE,
+  AUTH_FORM_CHANGE,
+  LOGIN,
+  TEMPORARY_USER_SAVE,
+  LOGOUT,
+  TEMPORARY_USER_CLEAR,
+  FORM_CLEAR,
+  AUTH_ERROR,
+  AUTH_ERROR_CLEAR
+} from "../actions";
+import { FETCH_ERROR } from "../actions/football";
+import football from "./football";
+import admin from "./admin";
 
-function form (state = {}, action) {
+function form(state = {}, action) {
   switch (action.type) {
     case FORM_INPUT_CHANGE:
-      return { ...state, [action.inputKey]: action.value }
+      return { ...state, [action.inputKey]: action.value };
     case FORM_CLEAR:
-      return {}
+      return {};
     default:
-      return state
+      return state;
   }
 }
 
-function authForm (state = 'EMAIL', action) {
+function authForm(state = "EMAIL", action) {
   switch (action.type) {
     case AUTH_FORM_CHANGE:
-      return action.to
+      return action.to;
     default:
-      return state
+      return state;
   }
 }
 
-export const authInitialState = { user: null }
+export const authInitialState = { user: null };
 
-function auth (state = authInitialState, action) {
+function auth(state = authInitialState, action) {
   switch (action.type) {
     case LOGIN:
-      return action.auth
+      return action.auth;
     case LOGOUT:
-      return authInitialState
+      return authInitialState;
     default:
-      return state
+      return state;
   }
 }
 
-function tempUser (state = {}, action) {
+function tempUser(state = {}, action) {
   switch (action.type) {
     case TEMPORARY_USER_SAVE:
-      return action.user
+      return action.user;
     case TEMPORARY_USER_CLEAR:
-      return {}
+      return {};
     default:
-      return state
+      return state;
   }
 }
 
-function globalError (state = '', action) {
+function globalError(state = "", action) {
   switch (action.type) {
     case AUTH_ERROR:
     case FETCH_ERROR:
-      return action.error
+      return action.error;
     case AUTH_ERROR_CLEAR:
-      return ''
+      return "";
     default:
-      return state
+      return state;
   }
 }
 
@@ -69,6 +79,6 @@ const rootReducer = combineReducers({
   football,
   error: globalError,
   admin
-})
+});
 
-export default rootReducer
+export default rootReducer;

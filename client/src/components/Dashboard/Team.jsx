@@ -1,16 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-import TeamCrest from '../Common/TeamCrest'
+import TeamCrest from "../Common/TeamCrest";
 
 const Team = ({ name, stats: { wins, draws, losses } }) => (
-  <Link to={`/team/${name}`} >
-    <div className='team interactive'>
-      <div className='wrapper'>
-        <TeamCrest className='team-crest' name={name} />
-        <span className='team-name'>{name}</span>
-        <div className='team-stats'>
+  <Link to={`/team/${name}`}>
+    <div className="team interactive">
+      <div className="wrapper">
+        <TeamCrest className="team-crest" name={name} />
+        <span className="team-name">{name}</span>
+        <div className="team-stats">
           <div>
             <div>W</div>
             <div>{wins}</div>
@@ -27,7 +27,7 @@ const Team = ({ name, stats: { wins, draws, losses } }) => (
       </div>
     </div>
   </Link>
-)
+);
 
 Team.propTypes = {
   name: PropTypes.string.isRequired,
@@ -37,6 +37,6 @@ Team.propTypes = {
     losses: PropTypes.number.isRequired
   }),
   isFavourite: PropTypes.bool
-}
+};
 
-export default Team
+export default Team;

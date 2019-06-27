@@ -15,5 +15,8 @@
   },
   "keywords": [],
   "author": "KN",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
 }

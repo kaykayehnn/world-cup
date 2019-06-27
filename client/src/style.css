@@ -3,8 +3,8 @@
 /* 500px, 650px, 800px, 1500px */
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #807F78;
+  font-family: "Roboto", sans-serif;
+  color: #807f78;
 }
 
 a {
@@ -12,11 +12,17 @@ a {
 }
 
 .content {
-  background: #ADA996;
+  background: #ada996;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);
+  background: -webkit-linear-gradient(
+    to bottom,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  );
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);
+  background: linear-gradient(to bottom, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: 100vh;
 }
@@ -84,7 +90,7 @@ a {
   margin-bottom: 20px;
 }
 
-.navbar .title>* {
+.navbar .title > * {
   margin: 0 10px;
 }
 
@@ -121,7 +127,7 @@ a {
   .menu {
     flex-wrap: wrap;
   }
-  .menu.menu>* {
+  .menu.menu > * {
     box-sizing: border-box;
     flex: 0 0 90%;
     display: block;
@@ -135,20 +141,20 @@ a {
   .avatar.avatar {
     padding: 0.25em 0.6em;
     margin: 5px 0px;
-    border: 1px solid #ADA996;
+    border: 1px solid #ada996;
     border-radius: 4px;
     transition: 0.3s;
   }
-  .avatar>img {
+  .avatar > img {
     height: 30px;
     width: 30px;
   }
   .avatar:hover {
-    background: #F2F2F2;
+    background: #f2f2f2;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   }
   avatar.active {
-    background: #F2F2F2;
+    background: #f2f2f2;
   }
   .last {
     order: 1;
@@ -158,10 +164,10 @@ a {
 .navbar-link {
   padding: 0.25em 0.6em;
   margin: 5px 10px 5px 0px;
-  border: 1px solid #ADA996;
+  border: 1px solid #ada996;
   font-weight: 300;
   border-radius: 4px;
-  color: #807F78;
+  color: #807f78;
   cursor: pointer;
   flex: 0 1 auto;
   transition: 0.3s;
@@ -175,7 +181,7 @@ a {
 
 .navbar-link:hover,
 .navbar-link.active {
-  background: #F2F2F2;
+  background: #f2f2f2;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -207,7 +213,7 @@ avatar.active {
   padding: 20px;
   border: 2px solid #999999;
   border-radius: 15px;
-  background: #F2F2F2;
+  background: #f2f2f2;
 }
 
 .auth-title {
@@ -255,15 +261,15 @@ avatar.active {
 }
 
 .input-group input {
-  background: #F2F2F2;
-  border: 2px solid #DBDBDB;
+  background: #f2f2f2;
+  border: 2px solid #dbdbdb;
   padding: 5px 5px 3px;
   outline: none;
   margin: 0 0 10px;
 }
 
 .input-group input:focus {
-  border: 2px solid #ADA996;
+  border: 2px solid #ada996;
 }
 
 .disabled {
@@ -272,7 +278,7 @@ avatar.active {
 
 .enabled {
   cursor: pointer;
-  color: #807F78;
+  color: #807f78;
   animation: pulse-lg 0.5s ease-out forwards;
 }
 
@@ -290,7 +296,7 @@ avatar.active {
   padding-bottom: 2px;
   background: transparent;
   cursor: pointer;
-  color: #807F78;
+  color: #807f78;
   outline: none;
   margin: 0px;
   padding: 0px;
@@ -337,7 +343,7 @@ avatar.active {
 
 .auth-error {
   visibility: hidden;
-  border: 1px solid #ADA996;
+  border: 1px solid #ada996;
   border-radius: 2px;
   padding: 5px 10px;
   font-weight: 300;
@@ -386,11 +392,11 @@ avatar.active {
 
 .team {
   border: 1px solid #999999;
-  background: #EAEAEA;
-  color: #807F78;
+  background: #eaeaea;
+  color: #807f78;
   border-radius: 10%;
   transition: 0.3s;
-  font-size: 1.20em;
+  font-size: 1.2em;
 }
 
 .team:last-child {
@@ -403,7 +409,7 @@ avatar.active {
 }
 
 .team:hover {
-  background: #F2F2F2;
+  background: #f2f2f2;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -536,7 +542,7 @@ avatar.active {
 
 .match .match-summary {
   margin: auto 0px;
-  font-size: 1.30em;
+  font-size: 1.3em;
 }
 
 .match {
@@ -546,7 +552,7 @@ avatar.active {
 }
 
 .match:hover {
-  background: #F2F2F2;
+  background: #f2f2f2;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -633,7 +639,7 @@ avatar.active {
   flex-wrap: wrap;
 }
 
-.match-stats>* {
+.match-stats > * {
   padding: 10px;
   border: 1px solid #999999;
   border-radius: 4px;

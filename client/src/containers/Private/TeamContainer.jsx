@@ -1,10 +1,10 @@
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 
-import TeamDetails from '../../components/TeamDetails'
-import { fetchTeamDetails } from '../../actions/football'
+import TeamDetails from "../../components/TeamDetails";
+import { fetchTeamDetails } from "../../actions/football";
 
 const mapStateToProps = (state, ownProps) => {
-  let teamName = ownProps.match.params.teamName
+  let teamName = ownProps.match.params.teamName;
 
   return {
     team: {
@@ -12,15 +12,18 @@ const mapStateToProps = (state, ownProps) => {
       stats: state.football.teamDetails.stats,
       matches: state.football.teamDetails.matches
     }
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  let teamName = ownProps.match.params.teamName
+  let teamName = ownProps.match.params.teamName;
 
   return {
     fetchData: () => dispatch(fetchTeamDetails(teamName))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(TeamDetails)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TeamDetails);

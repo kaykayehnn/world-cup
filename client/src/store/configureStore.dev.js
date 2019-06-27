@@ -1,18 +1,20 @@
-import { createStore, applyMiddleware } from 'redux'
-import rootReducer from '../reducers'
-import { createLogger } from 'redux-logger'
-import thunk from 'redux-thunk'
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "../reducers";
+import { createLogger } from "redux-logger";
+import thunk from "redux-thunk";
 
 const configureStore = preloadedState => {
-  const store = createStore(rootReducer,
+  const store = createStore(
+    rootReducer,
     preloadedState,
-    applyMiddleware(thunk, createLogger()))
+    applyMiddleware(thunk, createLogger())
+  );
 
   if (module.hot) {
-    module.hot.accept('../reducers', () => store.replaceReducer(rootReducer))
+    module.hot.accept("../reducers", () => store.replaceReducer(rootReducer));
   }
 
-  return store
-}
+  return store;
+};
 
-export default configureStore
+export default configureStore;

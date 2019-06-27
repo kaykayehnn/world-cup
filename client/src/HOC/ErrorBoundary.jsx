@@ -1,26 +1,26 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 
 class ErrorBoundary extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
-    this.shouldRedirect = false
+    this.shouldRedirect = false;
   }
 
-  componentDidCatch () {
-    this.shouldRedirect = true
-    this.forceUpdate()
+  componentDidCatch() {
+    this.shouldRedirect = true;
+    this.forceUpdate();
   }
 
-  render () {
+  render() {
     if (this.shouldRedirect) {
-      this.shouldRedirect = false
-      return <Redirect to='/' />
+      this.shouldRedirect = false;
+      return <Redirect to="/" />;
     }
 
-    return this.props.children
+    return this.props.children;
   }
 }
 
-export default ErrorBoundary
+export default ErrorBoundary;

@@ -1,67 +1,70 @@
-import React, { Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import React, { Fragment } from "react";
+import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import avatarToSvg from '../../utilities/avatarToSvg'
+import avatarToSvg from "../../utilities/avatarToSvg";
 
 const publicLinks = [
-  { label: 'Sign in', location: '/' },
-  { label: 'Credits', location: '/credits' }
-]
+  { label: "Sign in", location: "/" },
+  { label: "Credits", location: "/credits" }
+];
 const privateLinks = [
-  { label: 'Dashboard', location: '/dashboard' },
+  { label: "Dashboard", location: "/dashboard" },
   publicLinks[1],
-  { label: 'Log out', location: '/logout', className: 'last' }
-]
+  { label: "Log out", location: "/logout", className: "last" }
+];
 
 const adminLinks = [
   privateLinks[0],
-  { label: 'Admin', location: '/admin' },
+  { label: "Admin", location: "/admin" },
   privateLinks[1],
   privateLinks[2]
-]
+];
 
-const linksArr = [publicLinks, privateLinks, adminLinks]
+const linksArr = [publicLinks, privateLinks, adminLinks];
 
 const Navbar = ({ user, history }) => {
-  const isLoggedIn = !!user
-  const isAdmin = isLoggedIn && user.roles.indexOf('admin') >= 0
+  const isLoggedIn = !!user;
+  const isAdmin = isLoggedIn && user.roles.indexOf("admin") >= 0;
 
-  let linkIx = +isLoggedIn + +isAdmin
-  let links = linksArr[linkIx]
+  let linkIx = +isLoggedIn + +isAdmin;
+  let links = linksArr[linkIx];
 
   return (
     <Fragment>
-      <div className='delimiter' />
-      <div className='navbar'>
-        <div className='flex flex-center title'>
-          <span className='heading'>Russia</span>
-          <img className='navbar-icon' src='/images/russia.svg' />
-          <img className='navbar-icon no-hide' src='/images/world-cup.svg' />
-          <span className='heading'>2018</span>
-          <img className='navbar-icon' src='/images/calendar.svg' />
+      <div className="delimiter" />
+      <div className="navbar">
+        <div className="flex flex-center title">
+          <span className="heading">Russia</span>
+          <img className="navbar-icon" src="/images/russia.svg" />
+          <img className="navbar-icon no-hide" src="/images/world-cup.svg" />
+          <span className="heading">2018</span>
+          <img className="navbar-icon" src="/images/calendar.svg" />
         </div>
-        <div className='menu flex'>
+        <div className="menu flex">
           {links.map(link => (
-            <NavLink key={link.label}
-              className={`navbar-link ${link.className || ''}`}
+            <NavLink
+              key={link.label}
+              className={`navbar-link ${link.className || ""}`}
               exact
-              to={link.location}>{link.label}
-            </NavLink>)
+              to={link.location}
+            >
+              {link.label}
+            </NavLink>
+          ))}
+          {isLoggedIn && (
+            <NavLink className="avatar" exact to="/profile">
+              <img src={avatarToSvg(user.avatarUrl)} />
+            </NavLink>
           )}
-          {isLoggedIn &&
-            <NavLink className='avatar' exact to='/profile'>
-              <img
-                src={avatarToSvg(user.avatarUrl)} />
-            </NavLink>}
         </div>
       </div>
     </Fragment>
-  )
-}
+  );
+};
 
 Navbar.propTypes = {
   user: PropTypes.object
-}
+};
 
-export default Navbar
+export default Navbar;

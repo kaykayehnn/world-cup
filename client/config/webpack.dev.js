@@ -1,21 +1,21 @@
-const path = require('path')
-const webpack = require('webpack')
-const HTMLWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require("path");
+const webpack = require("webpack");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const { baseConfig, basePath } = require('./webpack.base')
+const { baseConfig, basePath } = require("./webpack.base");
 
 /** @type {webpack.Configuration} */
 const config = {
-  mode: 'development',
-  devtool: 'eval-source-map',
+  mode: "development",
+  devtool: "eval-source-map",
   devServer: {
     port: 3000,
     hot: true,
     historyApiFallback: true,
     proxy: {
-      '/api': {
-        target: 'http://localhost:9000'
+      "/api": {
+        target: "http://localhost:9000"
       }
     }
   },
@@ -23,30 +23,32 @@ const config = {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         options: {
           cacheDirectory: true,
-          presets: ['env', 'react'],
-          plugins: ['react-hot-loader/babel', 'babel-plugin-transform-object-rest-spread'].map(require.resolve)
+          presets: ["env", "react"],
+          plugins: [
+            "react-hot-loader/babel",
+            "babel-plugin-transform-object-rest-spread"
+          ].map(require.resolve)
         }
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ["style-loader", "css-loader"]
       }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
-      { from: path.join(basePath, 'public/'), to: path.join(basePath, 'dist') }
+      { from: path.join(basePath, "public/"), to: path.join(basePath, "dist") }
     ]),
-    new HTMLWebpackPlugin({ template: path.join(basePath, 'public/index.html') })
+    new HTMLWebpackPlugin({
+      template: path.join(basePath, "public/index.html")
+    })
   ]
-}
+};
 
-module.exports = Object.assign(baseConfig, config)
+module.exports = Object.assign(baseConfig, config);
