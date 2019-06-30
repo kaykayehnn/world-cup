@@ -6,7 +6,6 @@ axios.defaults.headers["X-Auth-Token"] = process.env.FOOTBALL_API_KEY;
 
 const MATCHES_URL = "http://api.football-data.org/v2/competitions/2000/matches";
 const COMPETITION_MATCHES = "COMPETITION_MATCHES";
-const CACHE_TIME = 30;
 
 const cacheChecker = (key, onAvailable, onMissing) => {
   return function(cache) {
@@ -17,7 +16,10 @@ const cacheChecker = (key, onAvailable, onMissing) => {
         } else {
           onMissing().then(data => {
             resolve(onAvailable(data));
-            cache.setex(COMPETITION_MATCHES, CACHE_TIME, JSON.stringify(data));
+
+            // API calls used to be cached for 30s but are now infinitely
+            // stored since data is effectively static.
+            cache.set(COMPETITION_MATCHES, JSON.stringify(data));
           });
         }
       });
