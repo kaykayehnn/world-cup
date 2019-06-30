@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import MatchDetails from "../../components/MatchDetails/";
+import MatchDetails from "../../components/MatchDetails";
 import { fetchMatchDetails } from "../../actions/football";
 
 const mapStateToProps = state => ({

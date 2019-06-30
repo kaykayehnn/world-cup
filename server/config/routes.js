@@ -16,17 +16,9 @@ module.exports = app => {
     controllers.users.setFavouriteTeams
   );
 
-  app.get("/api/teams", onlyAuthenticated, controllers.teams.getTeams);
-  app.get(
-    "/api/teams/:teamName",
-    onlyAuthenticated,
-    controllers.teams.getTeamMatches
-  );
-  app.get(
-    "/api/matches/:matchId",
-    onlyAuthenticated,
-    controllers.teams.getMatchById
-  );
+  app.get("/api/teams", controllers.teams.getTeams);
+  app.get("/api/teams/:teamName", controllers.teams.getTeamMatches);
+  app.get("/api/matches/:matchId", controllers.teams.getMatchById);
 
   app.get("/api/users", onlyAdmins, controllers.users.getAllUsers);
   app.put("/api/users/:userId", onlyAdmins, controllers.users.editUser);

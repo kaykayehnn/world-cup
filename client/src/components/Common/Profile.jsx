@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Dashboard from "../../containers/Private/DashboardContainer";
+import Dashboard from "../../containers/Public/DashboardContainer";
 import avatarToSvg from "../../utilities/avatarToSvg";
 
 const Profile = ({ email, avatarUrl, favouriteTeams }) => (

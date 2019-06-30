@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Home from "./Public/Home";
-import Dashboard from "./Private/DashboardContainer";
-import TeamDetails from "./Private/TeamContainer";
-import MatchDetails from "./Private/MatchContainer";
+import AuthForm from "./Public/AuthForm";
+import Dashboard from "./Public/DashboardContainer";
+import TeamDetails from "./Public/TeamContainer";
+import MatchDetails from "./Public/MatchContainer";
 import Profile from "./Private/Profile";
 import Admin from "./Admin/";
 import Logout from "./Private/Logout";
@@ -21,13 +21,13 @@ export default props => (
     <ErrorBoundary>
       {props.children}
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/team/:teamName" component={TeamDetails} />
+        <Route exact path="/matches/:matchId" component={MatchDetails} />
+        <Route exact path="/login" component={AuthForm} />
 
-        <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <PrivateRoute exact path="/team/:teamName" component={TeamDetails} />
         <PrivateRoute exact path="/profile" component={Profile} />
         <PrivateRoute exact path="/logout" component={Logout} />
-        <PrivateRoute exact path="/matches/:matchId" component={MatchDetails} />
 
         <AdminRoute exact path="/admin" component={Admin} />
 
