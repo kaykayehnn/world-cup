@@ -5,20 +5,21 @@ import PropTypes from "prop-types";
 import avatarToSvg from "../../utilities/avatarToSvg";
 
 const publicLinks = [
-  { label: "Sign in", location: "/" },
+  { label: "Home", location: "/" },
+  { label: "Sign in", location: "/login" },
   { label: "Credits", location: "/credits" }
 ];
 const privateLinks = [
-  { label: "Dashboard", location: "/dashboard" },
-  publicLinks[1],
+  { label: "Home", location: "/" },
+  { label: "Credits", location: "/credits" },
   { label: "Log out", location: "/logout", className: "last" }
 ];
 
 const adminLinks = [
-  privateLinks[0],
+  { label: "Dashboard", location: "/" },
   { label: "Admin", location: "/admin" },
-  privateLinks[1],
-  privateLinks[2]
+  { label: "Credits", location: "/credits" },
+  { label: "Log out", location: "/logout", className: "last" }
 ];
 
 const linksArr = [publicLinks, privateLinks, adminLinks];

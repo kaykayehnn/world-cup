@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import { Redirect } from "react-router-dom";
 import LoginForm from "../../components/Auth/LoginForm";
 import RegisterForm from "../../components/Auth/RegisterForm";
 import {
@@ -17,7 +17,11 @@ import {
 // 2. Email only
 // 3. Password only - followed after valid submission in state 2.
 
-const Redirecter = function(props) {
+const Redirecter = function({ user, ...props }) {
+  if (user) {
+    return <Redirect to="/" />;
+  }
+
   let form =
     props.authFormView === "CREATE" ? (
       <RegisterForm {...props} />
@@ -32,7 +36,8 @@ const mapStateToProps = state => ({
   authFormView: state.authFormView,
   values: state.form,
   tempUser: state.tempUser,
-  error: state.error
+  error: state.error,
+  user: state.auth.user
 });
 
 const mapDispatchToProps = dispatch => ({

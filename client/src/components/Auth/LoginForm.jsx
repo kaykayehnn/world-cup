@@ -65,7 +65,16 @@ const LoginForm = ({
           />
         )}
       </div>
-      {isPassword && passwordOnlyLazy()}
+      {isPassword && (
+        <div className="login-greeting">
+          <img
+            className="avatar-tiny"
+            src={avatarToSvg(tempUser.avatarUrl)}
+            alt="Avatar"
+          />
+          <h3 className="subtitle">Hi {tempUser.email}</h3>
+        </div>
+      )}
       <div className={`auth-error ${error && "visible"}`} onClick={clearError}>
         {error || "Error"}
       </div>
