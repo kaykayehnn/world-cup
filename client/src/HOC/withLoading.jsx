@@ -24,7 +24,7 @@ const withLoading = WrappedComponent =>
               prevState.state === STATE_LOADING ? STATE_SPINNING : STATE_LOADED
           };
         });
-      }, 250);
+      }, 300);
     }
 
     componentWillUnmount() {
