@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import Input from "./Input";
 import { emailRgx, passwordRgx } from "../../utilities/validation";
-import preventDefaultAndCall from "../../utilities/preventDefault";
 
 const inputFields = [
   {
@@ -37,6 +36,12 @@ const LoginForm = ({
     canSubmit &= validator.test(values[key] || "");
   }
 
+  function onSubmit(event) {
+    event.preventDefault();
+
+    createAccount();
+  }
+
   return (
     <div className="welcome-modal">
       <div className="auth-title">
@@ -62,6 +67,7 @@ const LoginForm = ({
         </div>
       </form>
       <button
+        type="submit"
         className="change-state-btn interactive"
         onClick={() => switchState("EMAIL")}
       >

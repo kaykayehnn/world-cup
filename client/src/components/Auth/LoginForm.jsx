@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 import Input from "./Input";
 import { emailRgx, passwordRgx } from "../../utilities/validation";
-import preventDefaultAndCall from "../../utilities/preventDefault";
 import avatarToSvg from "../../utilities/avatarToSvg";
 
 const inputFields = {
@@ -43,18 +42,15 @@ const LoginForm = ({
   }
 
   const isPassword = authFormView === "PASSWORD";
-  const passwordOnlyLazy = () => (
-    <div className="login-greeting">
-      <img
-        className="avatar-tiny"
-        src={avatarToSvg(tempUser.avatarUrl)}
-        alt="Avatar"
-      />
-      <h3 className="subtitle">Hi {tempUser.email}</h3>
-    </div>
-  );
 
-  const submitCallback = isPassword ? login : initiateLogin;
+  function onSubmit(event) {
+    event.preventDefault();
+    if (isPassword) {
+      login();
+    } else {
+      initiateLogin();
+    }
+  }
 
   return (
     <div className="welcome-modal">
@@ -73,10 +69,7 @@ const LoginForm = ({
       <div className={`auth-error ${error && "visible"}`} onClick={clearError}>
         {error || "Error"}
       </div>
-      <form
-        className="auth-form"
-        onSubmit={preventDefaultAndCall(submitCallback)}
-      >
+      <form className="auth-form" onSubmit={onSubmit}>
         {inputNodes}
         <div className="wrapper">
           <div className="input-group">
