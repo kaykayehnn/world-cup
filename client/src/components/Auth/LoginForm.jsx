@@ -76,7 +76,7 @@ const LoginForm = ({
             <input
               type="submit"
               value={isPassword ? "Sign in" : "Next"}
-              className={(canSubmit ? "enabled" : "disabled") + " interactive"}
+              className="interactive"
               disabled={!canSubmit}
             />
           </div>

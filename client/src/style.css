@@ -353,16 +353,6 @@ avatar.active {
 
 .auth-error.visible {
   visibility: visible;
-  animation: pulse-sm 0.5s ease-out forwards;
-}
-
-@keyframes pulse-sm {
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
 }
 
 .dashboard {
