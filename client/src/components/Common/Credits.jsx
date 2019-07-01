@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Helmet } from "react-helmet";
 
 const credits = [
   {
@@ -38,12 +39,18 @@ const credits = [
   }
 ];
 
-const Credits = () =>
-  credits.map(obj => (
-    <Fragment key={obj.label}>
-      <h2>{obj.label}</h2>
-      <div dangerouslySetInnerHTML={{ __html: obj.link }} />
-    </Fragment>
-  ));
+const Credits = () => (
+  <Fragment>
+    <Helmet>
+      <title>Credits</title>
+    </Helmet>
+    {credits.map(obj => (
+      <div key={obj.label}>
+        <h2>{obj.label}</h2>
+        <div dangerouslySetInnerHTML={{ __html: obj.link }} />
+      </div>
+    ))}
+  </Fragment>
+);
 
 export default Credits;

@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 
 import Favourite from "./Favourite";
 import Match from "./Match";
@@ -17,6 +18,9 @@ const TeamDetails = ({ team: { name, matches, stats }, history }) => {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>{name}</title>
+      </Helmet>
       <div className="team-details">
         <div className="heading centered">{name}</div>
         <Favourite teamName={name} />

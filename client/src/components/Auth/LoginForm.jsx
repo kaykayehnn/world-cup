@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 
 import Input from "./Input";
 import { emailRgx, passwordRgx } from "../../utilities/validation";
@@ -53,51 +54,59 @@ const LoginForm = ({
   }
 
   return (
-    <div className="welcome-modal">
-      <div className="auth-title">
-        <h2 className="title">Sign in</h2>
-        {(isPassword || tempUser.email) && (
-          <img
-            className={`icon interactive ${!isPassword ? "flipped" : ""}`}
-            onClick={() => switchState(isPassword ? "EMAIL" : "PASSWORD")}
-            src="/images/left-arrow.svg"
-            alt="Left arrow"
-          />
-        )}
-      </div>
-      {isPassword && (
-        <div className="login-greeting">
-          <img
-            className="avatar-tiny"
-            src={avatarToSvg(tempUser.avatarUrl)}
-            alt="Avatar"
-          />
-          <h3 className="subtitle">Hi {tempUser.email}</h3>
-        </div>
-      )}
-      <div className={`auth-error ${error && "visible"}`} onClick={clearError}>
-        {error || "Error"}
-      </div>
-      <form className="auth-form" onSubmit={onSubmit}>
-        {inputNodes}
-        <div className="wrapper">
-          <div className="input-group">
-            <input
-              type="submit"
-              value={isPassword ? "Sign in" : "Next"}
-              className="interactive"
-              disabled={!canSubmit}
+    <Fragment>
+      <Helmet>
+        <title>Sign in</title>
+      </Helmet>
+      <div className="welcome-modal">
+        <div className="auth-title">
+          <h2 className="title">Sign in</h2>
+          {(isPassword || tempUser.email) && (
+            <img
+              className={`icon interactive ${!isPassword ? "flipped" : ""}`}
+              onClick={() => switchState(isPassword ? "EMAIL" : "PASSWORD")}
+              src="/images/left-arrow.svg"
+              alt="Left arrow"
             />
-          </div>
+          )}
         </div>
-      </form>
-      <button
-        className={`change-state-btn interactive ${isPassword && "hidden"}`}
-        onClick={() => switchState("CREATE")}
-      >
-        Sign up
-      </button>
-    </div>
+        {isPassword && (
+          <div className="login-greeting">
+            <img
+              className="avatar-tiny"
+              src={avatarToSvg(tempUser.avatarUrl)}
+              alt="Avatar"
+            />
+            <h3 className="subtitle">Hi {tempUser.email}</h3>
+          </div>
+        )}
+        <div
+          className={`auth-error ${error && "visible"}`}
+          onClick={clearError}
+        >
+          {error || "Error"}
+        </div>
+        <form className="auth-form" onSubmit={onSubmit}>
+          {inputNodes}
+          <div className="wrapper">
+            <div className="input-group">
+              <input
+                type="submit"
+                value={isPassword ? "Sign in" : "Next"}
+                className="interactive"
+                disabled={!canSubmit}
+              />
+            </div>
+          </div>
+        </form>
+        <button
+          className={`change-state-btn interactive ${isPassword && "hidden"}`}
+          onClick={() => switchState("CREATE")}
+        >
+          Sign up
+        </button>
+      </div>
+    </Fragment>
   );
 };
 

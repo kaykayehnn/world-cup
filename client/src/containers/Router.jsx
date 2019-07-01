@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import AuthForm from "./Public/AuthForm";
-import Dashboard from "./Public/DashboardContainer";
+import Dashboard from "./Public/Home";
 import TeamDetails from "./Public/TeamContainer";
 import MatchDetails from "./Public/MatchContainer";
 import Profile from "./Private/Profile";

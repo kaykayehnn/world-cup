@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 
 import Input from "./Input";
 import { emailRgx, passwordRgx } from "../../utilities/validation";
@@ -43,34 +44,42 @@ const RegisterForm = ({
   }
 
   return (
-    <div className="welcome-modal">
-      <div className="auth-title">
-        <h2 className="title">Sign up</h2>
-      </div>
-      <div className={`auth-error ${error && "visible"}`} onClick={clearError}>
-        {error || "Error"}
-      </div>
-        <form className="auth-form" onSubmit={onSubmit}>
-        {inputNodes}
-        <div className="wrapper">
-          <div className="input-group submit">
-            <input
-              type="submit"
-              value="Create Account"
-              className="interactive"
-              disabled={!canSubmit}
-            />
-          </div>
+    <Fragment>
+      <Helmet>
+        <title>Sign up</title>
+      </Helmet>
+      <div className="welcome-modal">
+        <div className="auth-title">
+          <h2 className="title">Sign up</h2>
         </div>
-      </form>
-      <button
-        type="submit"
-        className="change-state-btn interactive"
-        onClick={() => switchState("EMAIL")}
-      >
-        Sign in
-      </button>
-    </div>
+        <div
+          className={`auth-error ${error && "visible"}`}
+          onClick={clearError}
+        >
+          {error || "Error"}
+        </div>
+        <form className="auth-form" onSubmit={onSubmit}>
+          {inputNodes}
+          <div className="wrapper">
+            <div className="input-group submit">
+              <input
+                type="submit"
+                value="Create Account"
+                className="interactive"
+                disabled={!canSubmit}
+              />
+            </div>
+          </div>
+        </form>
+        <button
+          type="submit"
+          className="change-state-btn interactive"
+          onClick={() => switchState("EMAIL")}
+        >
+          Sign in
+        </button>
+      </div>
+    </Fragment>
   );
 };
 

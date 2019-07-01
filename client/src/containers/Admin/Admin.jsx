@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
@@ -13,23 +14,28 @@ const Admin = ({ users }) => {
   ));
 
   return (
-    <div className="admin">
-      <div className="admin-title">Administration</div>
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Email</th>
-            <th>__V</th>
-            <th>Roles</th>
-            <th>Favourite teams</th>
-            <th>Avatar Index</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>{usersNodes}</tbody>
-      </table>
-    </div>
+    <Fragment>
+      <Helmet>
+        <title>Admin</title>
+      </Helmet>
+      <div className="admin">
+        <div className="admin-title">Administration</div>
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Email</th>
+              <th>__V</th>
+              <th>Roles</th>
+              <th>Favourite teams</th>
+              <th>Avatar Index</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>{usersNodes}</tbody>
+        </table>
+      </div>
+    </Fragment>
   );
 };
 
