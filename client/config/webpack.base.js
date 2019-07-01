@@ -4,6 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
 const basePath = path.resolve(__dirname, "..");
+const publicPath = process.env.PUBLIC_PATH || "/";
 
 /** @type {webpack.Configuration} */
 const baseConfig = {
@@ -12,7 +13,7 @@ const baseConfig = {
   output: {
     path: path.resolve(basePath, "dist"),
     filename: "bundle.js",
-    publicPath: process.env.PUBLIC_PATH || "/"
+    publicPath
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -28,7 +29,7 @@ const baseConfig = {
       { from: path.join(basePath, "public/"), to: path.join(basePath, "dist") }
     ]),
     new webpack.DefinePlugin({
-      "process.env.PUBLIC_PATH": JSON.stringify(process.env.PUBLIC_PATH || "/")
+      "process.env.PUBLIC_PATH": JSON.stringify(publicPath)
     })
   ]
 };
