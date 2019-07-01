@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
 const basePath = path.resolve(__dirname, "..");
-const publicPath = process.env.PUBLIC_PATH || "/";
+const publicPath = process.env.PUBLIC_PATH || "";
 
 /** @type {webpack.Configuration} */
 const baseConfig = {
