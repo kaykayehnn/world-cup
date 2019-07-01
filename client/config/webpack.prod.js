@@ -34,12 +34,6 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
-    new CopyWebpackPlugin([
-      { from: path.join(basePath, "public/"), to: path.join(basePath, "dist") }
-    ]),
-    new HTMLWebpackPlugin({
-      template: path.join(basePath, "public/index.html")
-    }),
     new WorkboxPlugin.GenerateSW({
       exclude: [/\.DS_STORE$/i],
       runtimeCaching: [

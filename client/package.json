@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --env=production",
-    "predeploy": "npm run build",
+    "predeploy": "PUBLIC_PATH=/ npm run build",
     "deploy": "gh-pages -d dist"
   },
   "keywords": [

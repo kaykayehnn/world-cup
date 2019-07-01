@@ -1,7 +1,4 @@
-const path = require("path");
 const webpack = require("webpack");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const { baseConfig } = require("./webpack.base");
 
@@ -42,11 +39,8 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new CopyWebpackPlugin([
-      { from: path.join(basePath, "public/"), to: path.join(basePath, "dist") }
-    ]),
-    new HTMLWebpackPlugin({
-      template: path.join(basePath, "public/index.html")
+    new webpack.DefinePlugin({
+      "process.env.BASE_PATH": JSON.stringify(process.env.PUBLIC_PATH || "/")
     })
   ]
 };

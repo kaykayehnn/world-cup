@@ -17,7 +17,7 @@ import PrivateRoute from "../HOC/PrivateRoute";
 import AdminRoute from "../HOC/AdminRoute";
 
 export default props => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_PATH}>
     <ErrorBoundary>
       {props.children}
       <Switch>
