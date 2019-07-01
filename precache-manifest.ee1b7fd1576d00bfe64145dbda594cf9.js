@@ -1,5 +1,9 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
+    "revision": "8bae8dc292cd97b7eeba2aa4956d6e57",
+    "url": "/CNAME"
+  },
+  {
     "revision": "a493ba0aa0b8ec8068d786d7248bb92c",
     "url": "/browserconfig.xml"
   },
