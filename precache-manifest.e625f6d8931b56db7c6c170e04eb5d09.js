@@ -1,14 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f93fbd3271fbf7053e4d299d3671bc83",
-    "url": "/.DS_Store"
-  },
-  {
     "revision": "a493ba0aa0b8ec8068d786d7248bb92c",
     "url": "/browserconfig.xml"
   },
   {
-    "revision": "74f325f2865475e862ad",
+    "revision": "adafc160906f265714a5",
     "url": "/bundle.js"
   },
   {
@@ -344,7 +340,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "74f325f2865475e862ad",
+    "revision": "adafc160906f265714a5",
     "url": "/main.19c1e68c045559ac2d82.css"
   },
   {

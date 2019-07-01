@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.79b577998129b820dd527fdb0ce5b457.js"
+  "/precache-manifest.e625f6d8931b56db7c6c170e04eb5d09.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -31,4 +31,4 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/\/api\/(?:teams|matches).*$/, new workbox.strategies.CacheFirst({ "cacheName":"api-responses", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/russia-wc.herokuapp.com\/api\/(?:teams|matches).*$/, new workbox.strategies.CacheFirst({ "cacheName":"api-responses", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
