@@ -3,6 +3,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
+const webpack = require("webpack");
 
 const { baseConfig, basePath } = require("./webpack.base");
 
@@ -40,9 +41,10 @@ const config = {
       template: path.join(basePath, "public/index.html")
     }),
     new WorkboxPlugin.GenerateSW({
+      exclude: [/\.DS_STORE$/i],
       runtimeCaching: [
         {
-          urlPattern: /\/api\/(?:teams|matches).*$/,
+          urlPattern: /^https:\/\/russia-wc.herokuapp.com\/api\/(?:teams|matches).*$/,
           handler: "CacheFirst",
           options: {
             cacheName: "api-responses",
@@ -52,6 +54,9 @@ const config = {
           }
         }
       ]
+    }),
+    new webpack.DefinePlugin({
+      "process.env.BASE_URL": JSON.stringify("https://russia-wc.herokuapp.com")
     })
   ]
 };

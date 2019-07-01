@@ -1,8 +1,10 @@
 import axios from "axios";
 import { getSession } from "./storage";
 
+const BASE_URL = process.env.BASE_URL || "";
+
 const instance = axios.create({
-  baseURL: "/api",
+  baseURL: BASE_URL + "/api",
   transformRequest: [
     function(data, headers) {
       let session = getSession();
