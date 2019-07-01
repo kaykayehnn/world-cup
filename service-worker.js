@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.3c1c08bc59772a13685ea9ce893fbbcd.js"
+  "/russia-wc/precache-manifest.ef3762b36b7ceee961cdae9d3f4aa023.js"
 );
 
 self.addEventListener('message', (event) => {
