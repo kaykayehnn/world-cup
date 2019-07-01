@@ -16,7 +16,7 @@ const privateLinks = [
 ];
 
 const adminLinks = [
-  { label: "Dashboard", location: "/" },
+  { label: "Home", location: "/" },
   { label: "Admin", location: "/admin" },
   { label: "Credits", location: "/credits" },
   { label: "Log out", location: "/logout", className: "last" }
