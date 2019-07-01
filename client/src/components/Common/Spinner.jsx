@@ -1,5 +1,6 @@
 import React from "react";
+import Image from "./Image";
 
-const Spinner = () => <img src="/images/football.svg" className="spinner" />;
+const Spinner = () => <Image src="/images/football.svg" className="spinner" />;
 
 export default Spinner;

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "./Image";
 
 const imageUrl =
   "/images/Serious-business-man-showing-open-palm-or-stop-gesture-and-looking-at-camera.gif";
@@ -6,7 +7,7 @@ const imageUrl =
 const Forbidden = () => (
   <div>
     <div className="forbidden-heading">You do not belong here.</div>
-    <img className="forbidden-img" src={imageUrl} />
+    <Image className="forbidden-img" src={imageUrl} />
   </div>
 );
 

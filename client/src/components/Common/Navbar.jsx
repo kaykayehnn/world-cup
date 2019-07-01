@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import avatarToSvg from "../../utilities/avatarToSvg";
+import Image from "../Common/Image";
 
 const publicLinks = [
   { label: "Home", location: "/" },
@@ -37,10 +38,10 @@ const Navbar = ({ user, history }) => {
       <div className="navbar">
         <div className="flex flex-center title">
           <span className="heading">Russia</span>
-          <img className="navbar-icon" src="/images/russia.svg" />
-          <img className="navbar-icon no-hide" src="/images/world-cup.svg" />
+          <Image className="navbar-icon" src="/images/russia.svg" />
+          <Image className="navbar-icon no-hide" src="/images/world-cup.svg" />
           <span className="heading">2018</span>
-          <img className="navbar-icon" src="/images/calendar.svg" />
+          <Image className="navbar-icon" src="/images/calendar.svg" />
         </div>
         <div className="menu flex">
           {links.map(link => (
@@ -55,7 +56,7 @@ const Navbar = ({ user, history }) => {
           ))}
           {isLoggedIn && (
             <NavLink className="avatar" exact to="/profile">
-              <img src={avatarToSvg(user.avatarUrl)} />
+              <Image src={avatarToSvg(user.avatarUrl)} />
             </NavLink>
           )}
         </div>

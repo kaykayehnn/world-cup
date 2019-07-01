@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import teamNameToSvg from "../../utilities/teamNameToSvg";
+import Image from "./Image";
 
 const TeamCrest = ({ name }) => (
-  <img className="team-crest" src={teamNameToSvg(name)} />
+  <Image className="team-crest" src={teamNameToSvg(name)} />
 );
 
 TeamCrest.propTypes = {

@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { toggleFavourite } from "../../actions/users";
+import Image from "../Common/Image";
 
 const Favourite = ({ isLoggedIn, isFavourite, toggle }) =>
   isLoggedIn && (
-    <img
+    <Image
       className="favourite"
       src={`/images/${isFavourite ? "star-full" : "star-outline"}.svg`}
       onClick={toggle}

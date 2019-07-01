@@ -6,6 +6,7 @@ import Favourite from "./Favourite";
 import Match from "./Match";
 import TeamCrest from "../Common/TeamCrest";
 import withLoading from "../../HOC/withLoading";
+import Image from "../Common/Image";
 
 const TeamDetails = ({ team: { name, matches, stats }, history }) => {
   let matchNodes = matches.map(m => (
@@ -29,15 +30,15 @@ const TeamDetails = ({ team: { name, matches, stats }, history }) => {
         </div>
         <div className="team-stats">
           <div>
-            <img className="stat-icon" src="/images/gold-medal.svg" />
+            <Image className="stat-icon" src="/images/gold-medal.svg" />
             <div>{stats.wins}</div>
           </div>
           <div>
-            <img className="stat-icon smaller" src="/images/close.svg" />
+            <Image className="stat-icon smaller" src="/images/close.svg" />
             <div>{stats.draws}</div>
           </div>
           <div>
-            <img className="stat-icon" src="/images/silver-medal.svg" />
+            <Image className="stat-icon" src="/images/silver-medal.svg" />
             <div>{stats.losses}</div>
           </div>
         </div>

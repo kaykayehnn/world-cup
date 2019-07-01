@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import Input from "./Input";
 import { emailRgx, passwordRgx } from "../../utilities/validation";
 import avatarToSvg from "../../utilities/avatarToSvg";
+import Image from "../Common/Image";
 
 const inputFields = {
   EMAIL: [
@@ -62,7 +63,7 @@ const LoginForm = ({
         <div className="auth-title">
           <h2 className="title">Sign in</h2>
           {(isPassword || tempUser.email) && (
-            <img
+            <Image
               className={`icon interactive ${!isPassword ? "flipped" : ""}`}
               onClick={() => switchState(isPassword ? "EMAIL" : "PASSWORD")}
               src="/images/left-arrow.svg"
@@ -72,7 +73,7 @@ const LoginForm = ({
         </div>
         {isPassword && (
           <div className="login-greeting">
-            <img
+            <Image
               className="avatar-tiny"
               src={avatarToSvg(tempUser.avatarUrl)}
               alt="Avatar"
