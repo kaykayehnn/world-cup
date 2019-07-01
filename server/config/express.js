@@ -3,11 +3,13 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors");
 
 const decodeUser = require("../middleware/decodeUser");
 const attachCache = require("../middleware/attachCache");
 
 module.exports = (app, cache) => {
+  app.use("/api", cors());
   app.use(cookieParser());
   app.use(express.json());
   app.use(bodyParser.urlencoded({ extended: true }));
