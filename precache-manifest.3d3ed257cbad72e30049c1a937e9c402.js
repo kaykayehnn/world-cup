@@ -336,7 +336,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/images/world-cup.svg"
   },
   {
-    "revision": "80f5fef31ed696c87adbd9a34481efe6",
+    "revision": "1fd2f81d79403c627ba4cb127da4a83d",
     "url": "/index.html"
   },
   {
