@@ -2,6 +2,7 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 const { baseConfig, basePath } = require("./webpack.base");
 
@@ -37,6 +38,20 @@ const config = {
     ]),
     new HTMLWebpackPlugin({
       template: path.join(basePath, "public/index.html")
+    }),
+    new WorkboxPlugin.GenerateSW({
+      runtimeCaching: [
+        {
+          urlPattern: /\/api\/(?:teams|matches).*$/,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "api-responses",
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 365
+            }
+          }
+        }
+      ]
     })
   ]
 };
