@@ -1,8 +1,13 @@
 const rimraf = require("rimraf");
+const merge = require("webpack-merge");
+const { baseConfig } = require("./config/webpack.base");
 
 module.exports = env => {
   rimraf.sync("./dist");
 
-  if (env === "production") return require("./config/webpack.prod");
-  return require("./config/webpack.dev");
+  let config;
+  if (env === "production") config = require("./config/webpack.prod");
+  else config = require("./config/webpack.dev");
+
+  return merge.smart(baseConfig, config);
 };

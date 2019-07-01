@@ -3,10 +3,10 @@ const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const { baseConfig, basePath } = require("./webpack.base");
+const { baseConfig } = require("./webpack.base");
 
 /** @type {webpack.Configuration} */
-const config = {
+module.exports = {
   mode: "development",
   devtool: "eval-source-map",
   devServer: {
@@ -50,5 +50,3 @@ const config = {
     })
   ]
 };
-
-module.exports = Object.assign(baseConfig, config);

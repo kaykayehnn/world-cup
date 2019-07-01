@@ -5,10 +5,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
 const webpack = require("webpack");
 
-const { baseConfig, basePath } = require("./webpack.base");
+const { basePath } = require("./webpack.base");
 
 /** @type {webpack.Configuration} */
-const config = {
+module.exports = {
   mode: "production",
   devtool: "none",
   module: {
@@ -60,5 +60,3 @@ const config = {
     })
   ]
 };
-
-module.exports = Object.assign(baseConfig, config);
