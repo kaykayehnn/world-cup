@@ -14,7 +14,7 @@ const Favourite = ({ isLoggedIn, isFavourite, toggle }) =>
   );
 
 Favourite.propTypes = {
-  isFavourite: PropTypes.bool.isRequired,
+  isFavourite: PropTypes.bool,
   toggle: PropTypes.func.isRequired
 };
 

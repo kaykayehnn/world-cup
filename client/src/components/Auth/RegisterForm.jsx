@@ -19,7 +19,7 @@ const inputFields = [
   }
 ];
 
-const LoginForm = ({
+const RegisterForm = ({
   values,
   inputChange,
   switchState,
@@ -50,10 +50,7 @@ const LoginForm = ({
       <div className={`auth-error ${error && "visible"}`} onClick={clearError}>
         {error || "Error"}
       </div>
-      <form
-        className="auth-form"
-        onSubmit={preventDefaultAndCall(createAccount)}
-      >
+        <form className="auth-form" onSubmit={onSubmit}>
         {inputNodes}
         <div className="wrapper">
           <div className="input-group submit">
@@ -77,7 +74,7 @@ const LoginForm = ({
   );
 };
 
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
   values: PropTypes.objectOf(PropTypes.string).isRequired,
   inputChange: PropTypes.func.isRequired,
   switchState: PropTypes.func.isRequired,
@@ -86,4 +83,4 @@ LoginForm.propTypes = {
   clearError: PropTypes.func.isRequired
 };
 
-export default LoginForm;
+export default RegisterForm;
