@@ -9,7 +9,7 @@ const decodeUser = require("../middleware/decodeUser");
 const attachCache = require("../middleware/attachCache");
 
 module.exports = (app, cache) => {
-  app.use("/api", cors());
+  app.use("/api", cors({ origin: "https://russia-wc.js.org" }));
   app.use(cookieParser());
   app.use(express.json());
   app.use(bodyParser.urlencoded({ extended: true }));
