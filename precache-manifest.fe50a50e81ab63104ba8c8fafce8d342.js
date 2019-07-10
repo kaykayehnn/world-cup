@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "6b8ae0aac2dd00b1cb59",
+    "revision": "3ff96e964fe3d82dd840",
     "url": "bundle.js"
   },
   {
@@ -340,12 +340,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "images/world-cup.svg"
   },
   {
-    "revision": "f47cfee1fe9e21ecb4ed8a456e727c6b",
+    "revision": "5ff60ff5106e8a60a630dc291a97defa",
     "url": "index.html"
   },
   {
-    "revision": "6b8ae0aac2dd00b1cb59",
-    "url": "main.3198405f20a4e1c1492a.css"
+    "revision": "3ff96e964fe3d82dd840",
+    "url": "main.4e762c913f7ad2b92c7c.css"
   },
   {
     "revision": "fa8ebdd131dc46177b9b511f6cb8ad0d",
