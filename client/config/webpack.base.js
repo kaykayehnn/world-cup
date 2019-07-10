@@ -25,6 +25,10 @@ const baseConfig = {
     new HTMLWebpackPlugin({
       template: path.join(basePath, "public/index.html")
     }),
+    new HTMLWebpackPlugin({
+      template: path.join(basePath, "public/index.html"),
+      filename: "404.html"
+    }),
     new CopyWebpackPlugin([
       { from: path.join(basePath, "public/"), to: path.join(basePath, "dist") }
     ]),
