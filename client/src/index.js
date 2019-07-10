@@ -11,6 +11,6 @@ import "./style.css";
 const initialState = { auth: getSession() };
 const store = configureStore(initialState);
 
-registerServiceWorker();
-
 ReactDOM.render(<Root store={store} />, document.getElementById("root"));
+
+registerServiceWorker();
