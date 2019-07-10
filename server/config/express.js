@@ -15,7 +15,11 @@ module.exports = (app, cache) => {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'", "*"],
-          connectSrc: ["'self'", "russia-wc.herokuapp.com"],
+          connectSrc: [
+            "'self'",
+            "russia-wc.herokuapp.com",
+            "www.google-analytics.com"
+          ],
           scriptSrc: [
             "'self'",
             "www.googletagmanager.com",
@@ -25,7 +29,9 @@ module.exports = (app, cache) => {
             "storage.googleapis.com"
           ],
           styleSrc: ["'self'", "fonts.googleapis.com"],
-          fontSrc: ["'self'", "fonts.gstatic.com"]
+          fontSrc: ["'self'", "fonts.gstatic.com"],
+          // Analytics load 1x1px gifs for smaller requests.
+          imgSrc: ["'self'", "www.google-analytics.com"]
         }
       }
     })
