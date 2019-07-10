@@ -572,6 +572,7 @@ avatar.active {
   min-width: 40px;
   display: block;
   margin: 20px auto;
+  transform-origin: center;
   animation: spin 4s linear infinite;
 }
 
