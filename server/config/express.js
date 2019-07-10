@@ -4,11 +4,32 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+const helmet = require("helmet");
 
 const decodeUser = require("../middleware/decodeUser");
 const attachCache = require("../middleware/attachCache");
 
 module.exports = (app, cache) => {
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'", "*"],
+          connectSrc: ["'self'", "russia-wc.herokuapp.com"],
+          scriptSrc: [
+            "'self'",
+            "www.googletagmanager.com",
+            // Gtag loads analytics from here
+            "www.google-analytics.com",
+            // Service worker scripts are imported from here
+            "storage.googleapis.com"
+          ],
+          styleSrc: ["'self'", "fonts.googleapis.com"],
+          fontSrc: ["'self'", "fonts.gstatic.com"]
+        }
+      }
+    })
+  );
   app.use("/api", cors({ origin: "https://russia-wc.js.org" }));
   app.use(cookieParser());
   app.use(express.json());
