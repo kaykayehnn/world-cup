@@ -35,7 +35,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
     new WorkboxPlugin.GenerateSW({
-      exclude: [/\.DS_STORE$/i],
+      exclude: [/\.DS_STORE$/i, /^CNAME$/i],
       runtimeCaching: [
         {
           urlPattern: /^https:\/\/russia-wc.herokuapp.com\/api\/(?:teams|matches).*$/,
