@@ -3,7 +3,10 @@ const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 
 module.exports = () => {
-  mongoose.connect(process.env.DB_PATH);
+  mongoose.connect(process.env.DB_PATH, {
+    useNewUrlParser: true,
+    useCreateIndex: true
+  });
   let db = mongoose.connection;
 
   db.once("open", err => {
