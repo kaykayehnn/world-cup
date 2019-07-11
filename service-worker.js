@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.c05b0c1b9f3a5af43aa63efad3cbcda5.js"
+  "/precache-manifest.87c5f9a4df942690415d5832b267d584.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -31,4 +31,8 @@ self.addEventListener('message', (event) => {
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"));
+
 workbox.routing.registerRoute(/^https:\/\/russia-wc.herokuapp.com\/api\/(?:teams|matches).*$/, new workbox.strategies.CacheFirst({ "cacheName":"api-responses", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/, new workbox.strategies.StaleWhileRevalidate({ "cacheName":"google-fonts-stylesheets", plugins: [] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/, new workbox.strategies.CacheFirst({ "cacheName":"google-fonts-webfonts", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] }), new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
