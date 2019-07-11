@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
 const webpack = require("webpack");
 
-const { basePath } = require("./webpack.base");
+const { basePath, publicPath } = require("./webpack.base");
 
 /** @type {webpack.Configuration} */
 module.exports = {
@@ -35,6 +35,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
     new WorkboxPlugin.GenerateSW({
+      navigateFallback: path.resolve(publicPath, "index.html"),
       exclude: [/\.DS_STORE$/i, /^CNAME$/i],
       runtimeCaching: [
         {
@@ -43,6 +44,27 @@ module.exports = {
           options: {
             cacheName: "api-responses",
             expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 365
+            }
+          }
+        },
+        {
+          urlPattern: /^https:\/\/fonts\.googleapis\.com/,
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "google-fonts-stylesheets"
+          }
+        },
+        {
+          urlPattern: /^https:\/\/fonts\.gstatic\.com/,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "google-fonts-webfonts",
+            cacheableResponse: {
+              statuses: [0, 200]
+            },
+            expiration: {
+              // 1 year
               maxAgeSeconds: 60 * 60 * 24 * 365
             }
           }
