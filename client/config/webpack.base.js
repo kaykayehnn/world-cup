@@ -40,5 +40,6 @@ const baseConfig = {
 
 module.exports = {
   baseConfig,
-  basePath
+  basePath,
+  publicPath
 };

@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 
-const { baseConfig } = require("./webpack.base");
+const { baseConfig, publicPath } = require("./webpack.base");
 
 /** @type {webpack.Configuration} */
 module.exports = {
@@ -40,7 +40,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      "process.env.BASE_PATH": JSON.stringify(process.env.PUBLIC_PATH || "/")
+      "process.env.BASE_PATH": publicPath
     })
   ]
 };
