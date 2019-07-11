@@ -1,5 +1,5 @@
 {
-  "name": "react-boilerplate",
+  "name": "@world-cup/client",
   "version": "1.0.0",
   "description": "React boilerplate with webpack",
   "private": true,
