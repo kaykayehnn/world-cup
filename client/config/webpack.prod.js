@@ -60,9 +60,6 @@ module.exports = {
           handler: "CacheFirst",
           options: {
             cacheName: "google-fonts-webfonts",
-            cacheableResponse: {
-              statuses: [0, 200]
-            },
             expiration: {
               // 1 year
               maxAgeSeconds: 60 * 60 * 24 * 365
