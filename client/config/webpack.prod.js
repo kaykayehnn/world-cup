@@ -39,7 +39,7 @@ module.exports = {
       exclude: [/\.DS_STORE$/i, /^CNAME$/i],
       runtimeCaching: [
         {
-          urlPattern: /^https:\/\/russia-wc.herokuapp.com\/api\/(?:teams|matches).*$/,
+          urlPattern: /^https:\/\/kaykayehnn.herokuapp.com\/world-cup\/api\/(?:teams|matches).*$/,
           handler: "CacheFirst",
           options: {
             cacheName: "api-responses",
@@ -69,7 +69,9 @@ module.exports = {
       ]
     }),
     new webpack.DefinePlugin({
-      "process.env.BASE_URL": JSON.stringify("https://russia-wc.herokuapp.com")
+      "process.env.BASE_URL": JSON.stringify(
+        "https://kaykayehnn.herokuapp.com/world-cup"
+      )
     })
   ]
 };
