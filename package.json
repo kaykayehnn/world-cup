@@ -1,11 +1,12 @@
 {
-  "name": "world-cup",
+  "name": "@world-cup/app",
   "workspaces": [
     "client",
     "server"
   ],
   "private": true,
   "version": "1.0.0",
+  "main": "index.js",
   "description": "React app showcasing Football World Cup 2018",
   "scripts": {
     "start": "cd server && yarn start"
