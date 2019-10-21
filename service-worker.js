@@ -33,6 +33,6 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"));
 
-workbox.routing.registerRoute(/^https:\/\/russia-wc.herokuapp.com\/api\/(?:teams|matches).*$/, new workbox.strategies.CacheFirst({ "cacheName":"api-responses", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/kaykayehnn.herokuapp.com\/world-cup\/api\/(?:teams|matches).*$/, new workbox.strategies.CacheFirst({ "cacheName":"api-responses", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/, new workbox.strategies.StaleWhileRevalidate({ "cacheName":"google-fonts-stylesheets", plugins: [] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/, new workbox.strategies.CacheFirst({ "cacheName":"google-fonts-webfonts", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
