@@ -13,5 +13,8 @@
   },
   "keywords": [],
   "author": "Krasimir Nedelchev (https://github.com/kaykayehnn)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@world-cup/server": "file:./server/"
+  }
 }

@@ -1,1 +1,1 @@
-module.exports = require("./server/");
+module.exports = require("@world-cup/server");
