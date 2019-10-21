@@ -11,7 +11,6 @@ module.exports = function boostrap() {
   require("./config/database")();
   require("./config/express")(app, cache);
   require("./config/routes")(app);
-  require("./config/jwtPassport")(cache);
 
   return app;
 };

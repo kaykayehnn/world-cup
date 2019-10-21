@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 
+const jwtPassport = require("./jwtPassport");
 const decodeUser = require("../middleware/decodeUser");
 const attachCache = require("../middleware/attachCache");
 
@@ -47,6 +48,7 @@ module.exports = (app, cache) => {
     )
   );
 
+  app.use(jwtPassport(cache));
   app.use(decodeUser(cache));
   app.use(attachCache(cache));
 };
