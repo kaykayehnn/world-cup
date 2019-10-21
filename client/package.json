@@ -4,10 +4,10 @@
   "version": "1.0.0",
   "main": "src/no-direct-require.js",
   "scripts": {
-    "postinstall": "yarn build",
+    "postinstall": "PUBLIC_PATH=/world-cup/ yarn build",
     "start": "webpack-dev-server",
     "build": "webpack --env=production",
-    "predeploy": "yarn run build",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d dist"
   },
   "author": "Krasimir Nedelchev (https://github.com/kaykayehnn)",

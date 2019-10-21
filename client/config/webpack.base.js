@@ -12,8 +12,7 @@ const baseConfig = {
   entry: "./src/index.js",
   output: {
     path: path.join(basePath, "dist"),
-    filename: "bundle.js",
-    publicPath
+    filename: "bundle.js"
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -23,10 +22,14 @@ const baseConfig = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.join(basePath, "public/index.html")
+      template: path.join(basePath, "public/index.html"),
+      base: publicPath,
+      inject: false
     }),
     new HTMLWebpackPlugin({
       template: path.join(basePath, "public/index.html"),
+      base: publicPath,
+      inject: false,
       filename: "404.html"
     }),
     new CopyWebpackPlugin([
