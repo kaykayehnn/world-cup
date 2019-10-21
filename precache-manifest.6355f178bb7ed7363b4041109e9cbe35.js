@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b66507ff9117e7e4e64bbbd292a0cbd7",
+    "revision": "0c158b7ad7ce30b5cd537b7dd5e48504",
     "url": "404.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "e255e36a2e6b0888f951",
+    "revision": "44af6a6152fa7570f772",
     "url": "bundle.js"
   },
   {
@@ -340,12 +340,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "images/world-cup.svg"
   },
   {
-    "revision": "b66507ff9117e7e4e64bbbd292a0cbd7",
+    "revision": "0c158b7ad7ce30b5cd537b7dd5e48504",
     "url": "index.html"
   },
   {
-    "revision": "e255e36a2e6b0888f951",
-    "url": "main.29302cea59a66556f79a.css"
+    "revision": "44af6a6152fa7570f772",
+    "url": "main.bba390f6b3ea657fc343.css"
   },
   {
     "revision": "fa8ebdd131dc46177b9b511f6cb8ad0d",
