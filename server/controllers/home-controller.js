@@ -2,7 +2,10 @@ const path = require("path");
 const fs = require("fs");
 
 const production = process.env.NODE_ENV === "production";
-const indexPath = path.resolve(__dirname, "../../public/index.html");
+const indexPath = path.join(
+  require.resolve("@world-cup/client/package.json"),
+  "../dist/index.html"
+);
 
 let cachedHtml;
 let handler;

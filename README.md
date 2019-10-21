@@ -5,12 +5,14 @@
 The main theme of this project is the World Cup in Russia. Match data is provided by [Football-Data](https://www.football-data.org).
 
 Frameworks and technologies used on the backend:
+
 - ExpressJS
 - MongoDB for storage
 - Redis for caching
 - Authentication is implemented through JsonWebTokens.
 
 Frameworks and libraries used on the frontend:
+
 - React for view management
 - Redux for state management(also react-redux bindings and redux-thunk middleware)
 - Webpack
@@ -25,6 +27,7 @@ Once a user logs in they get access to the Dashboard, which shows all of the 32 
 Administrators have access to a list of all users and can edit them and delete them.
 
 #### General requirements
+
 - [x] At least 3 different dynamic pages (pages like about, contacts, etc. do not count towards that figure)
 - [x] Use React.js for the client-side
 - [x] Communicate to a remote service (via REST, sockets, GraphQL, or a similar client-server technique)
@@ -34,17 +37,20 @@ Administrators have access to a list of all users and can edit them and delete t
 - [x] Brief documentation on the project and project architecture (as .md file)
 
 ### Other requirements
+
 - [x] Apply error handling and data validation to avoid crashes when invalid data is entered
 - [x] Prevent security exploits (XSS, XSRF, Parameter Tampering, etc.)
 - [x] Handle correctly special HTML characters and tags like <script>, line breaks, etc.
 - [x] Use a source control system, like GitHub
 
 #### Optional Requirements
+
 - [x] Use responsive design – Bootstrap, MDL, CSS Grids or another method of your choice
 - [ ] Nice looking UI, supporting of all modern and old Web browsers
 - [ ] Good usability (easy to use UI)
 
 #### Bonuses
+
 - [x] Use a state management library like Flux or Redux
 - [x] Deploy the application in a cloud environment
 - [ ] Use a file storage cloud API, e.g. Dropbox, Google Drive or other for storing the files

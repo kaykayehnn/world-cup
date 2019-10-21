@@ -40,8 +40,12 @@ module.exports = (app, cache) => {
   app.use(cookieParser());
   app.use(express.json());
   app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(morgan(process.env.NODE_ENV === "production" ? "common" : "dev"));
-  app.use(express.static(path.resolve(__dirname, "../../public")));
+  app.use(morgan(process.env === "production" ? "common" : "dev"));
+  app.use(
+    express.static(
+      path.join(require.resolve("@world-cup/client/package.json"), "../dist")
+    )
+  );
 
   app.use(decodeUser(cache));
   app.use(attachCache(cache));

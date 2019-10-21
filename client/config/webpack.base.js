@@ -11,14 +11,14 @@ const baseConfig = {
   context: basePath,
   entry: "./src/index.js",
   output: {
-    path: path.resolve(basePath, "dist"),
+    path: path.join(basePath, "dist"),
     filename: "bundle.js",
     publicPath
   },
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      moment$: path.join(basePath, "node_modules/moment/min/moment.min.js")
+      moment$: require.resolve("moment/min/moment.min.js")
     }
   },
   plugins: [

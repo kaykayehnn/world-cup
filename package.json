@@ -1,22 +1,16 @@
 {
   "name": "world-cup",
-  "version": "0.0.1",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "private": true,
+  "version": "1.0.0",
   "description": "React app showcasing Football World Cup 2018",
-  "main": "index.js",
   "scripts": {
-    "prestart": "npm run client:build",
-    "start": "npm run server:start",
-    "postinstall": "cd server && npm install && cd ../client && npm install",
-    "server:start": "cd server && npm start",
-    "server:dev": "cd server && npm run dev",
-    "client:build": "cd client && npm run build",
-    "postclient:build": "rm -rf public && mkdir public && cp -r client/dist/* public",
-    "client:dev": "cd client && npm start"
+    "start": "cd server && yarn start"
   },
   "keywords": [],
-  "author": "KN",
-  "license": "MIT",
-  "devDependencies": {
-    "prettier": "^1.18.2"
-  }
+  "author": "Krasimir Nedelchev (https://github.com/kaykayehnn)",
+  "license": "MIT"
 }
