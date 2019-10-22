@@ -1,10 +1,10 @@
 {
-  "name": "@world-cup/client",
+  "name": "@russia-wc/client",
   "private": true,
   "version": "1.0.0",
   "main": "src/no-direct-require.js",
   "scripts": {
-    "postinstall": "PUBLIC_PATH=/world-cup/ yarn build",
+    "postinstall": "PUBLIC_PATH=/russia-wc/ yarn build",
     "start": "webpack-dev-server",
     "build": "webpack --env=production",
     "predeploy": "yarn build",

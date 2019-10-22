@@ -1,5 +1,5 @@
 {
-  "name": "@world-cup/app",
+  "name": "@russia-wc/app",
   "workspaces": [
     "client",
     "server"

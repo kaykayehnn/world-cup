@@ -1,5 +1,5 @@
 {
-  "name": "@world-cup/server",
+  "name": "@russia-wc/server",
   "version": "1.0.0",
   "description": "World cup server",
   "main": "index.js",

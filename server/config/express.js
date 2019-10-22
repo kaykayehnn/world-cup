@@ -44,7 +44,7 @@ module.exports = (app, cache) => {
   app.use(morgan(process.env === "production" ? "common" : "dev"));
   app.use(
     express.static(
-      path.join(require.resolve("@world-cup/client/package.json"), "../dist")
+      path.join(require.resolve("@russia-wc/client/package.json"), "../dist")
     )
   );
 
