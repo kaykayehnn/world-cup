@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.697484e7a29743e2614aa71f6b25ede1.js"
+  "precache-manifest.e1f7e80befa9bd7bf2893446e5e0d70e.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -33,6 +33,6 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"));
 
-workbox.routing.registerRoute(/^https:\/\/kaykayehnn.herokuapp.com\/world-cup\/api\/(?:teams|matches).*$/, new workbox.strategies.CacheFirst({ "cacheName":"api-responses", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/kaykayehnn.herokuapp.com\/russia-wc\/api\/(?:teams|matches).*$/, new workbox.strategies.CacheFirst({ "cacheName":"api-responses", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com/, new workbox.strategies.StaleWhileRevalidate({ "cacheName":"google-fonts-stylesheets", plugins: [] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com/, new workbox.strategies.CacheFirst({ "cacheName":"google-fonts-webfonts", plugins: [new workbox.expiration.Plugin({ maxAgeSeconds: 31536000, purgeOnQuotaError: false })] }), 'GET');

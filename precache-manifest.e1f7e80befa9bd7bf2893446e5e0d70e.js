@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "browserconfig.xml"
   },
   {
-    "revision": "44af6a6152fa7570f772",
+    "revision": "83b8201b40c22a9a7cd6",
     "url": "bundle.js"
   },
   {
@@ -344,7 +344,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "index.html"
   },
   {
-    "revision": "44af6a6152fa7570f772",
+    "revision": "83b8201b40c22a9a7cd6",
     "url": "main.bba390f6b3ea657fc343.css"
   },
   {
