@@ -383,7 +383,7 @@ avatar.active {
   border: 1px solid #999999;
   background: #eaeaea;
   color: #807f78;
-  border-radius: 10%;
+  border-radius: 2%;
   transition: 0.3s;
   font-size: 1.2em;
 }
