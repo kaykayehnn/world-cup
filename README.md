@@ -26,6 +26,18 @@ Non authenticated users are only presented with a login/register form and credit
 Once a user logs in they get access to the Dashboard, which shows all of the 32 teams in a grid along with their record of wins, draws and losses. There is a team details page, which shows the team's crest and the matches they've competed in, and a match details page, which shows its outcome and available stats, such as half-time score, full-time score, etc. A user can also favourite their supported teams and view only their stats in a concise manner at their profile page.
 Administrators have access to a list of all users and can edit them and delete them.
 
+## Screenshots
+
+Go try it out yourself at [https://russia-wc.js.org/](https://russia-wc.js.org/)!
+
+| <img width="350px" src="./screenshots/out/home.jpg"> | <img width="350px" src="./screenshots/out/profile.jpg"> |
+| ---------------------------------------------------- | ------------------------------------------------------- |
+| <img width="350px" src="./screenshots/out/team.jpg"> | <img width="350px" src="./screenshots/out/match.jpg">   |
+
+<img src="./screenshots/out/admin.jpg">
+
+## Requirements
+
 #### General requirements
 
 - [x] At least 3 different dynamic pages (pages like about, contacts, etc. do not count towards that figure)
